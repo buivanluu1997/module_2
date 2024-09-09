@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class UngDungChuyenDoiTienTe {
+public class Bai2_UngDungChuyenDoiTienTe {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double vnd = 23000;

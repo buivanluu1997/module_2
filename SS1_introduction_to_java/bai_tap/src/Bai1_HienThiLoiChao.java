@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class HienThiLoiChao {
+public class Bai1_HienThiLoiChao {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your name: ");
