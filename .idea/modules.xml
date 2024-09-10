@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BaiTapLyThuyet/BaiTapLyThuyet.iml" filepath="$PROJECT_DIR$/BaiTapLyThuyet/BaiTapLyThuyet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module_2/BaiTapLyThuyet.iml" filepath="$PROJECT_DIR$/module_2/BaiTapLyThuyet.iml" />
       <module fileurl="file://$PROJECT_DIR$/SS2_VongLapTrongJava/Bai_tap/Bai_tap.iml" filepath="$PROJECT_DIR$/SS2_VongLapTrongJava/Bai_tap/Bai_tap.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SS2_VongLapTrongJava/SS2.iml" filepath="$PROJECT_DIR$/SS2_VongLapTrongJava/SS2.iml" />
       <module fileurl="file://$PROJECT_DIR$/SS1_introduction_to_java/thuc_hanh/SystemTime/SystemTime.iml" filepath="$PROJECT_DIR$/SS1_introduction_to_java/thuc_hanh/SystemTime/SystemTime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SS3_Mang_va_phuong_thuc_trong_java/Thuc_Hanh/Thuc_Hanh.iml" filepath="$PROJECT_DIR$/SS3_Mang_va_phuong_thuc_trong_java/Thuc_Hanh/Thuc_Hanh.iml" />
       <module fileurl="file://$PROJECT_DIR$/SS2_VongLapTrongJava/Thuc_hanh/Thuc_hanh.iml" filepath="$PROJECT_DIR$/SS2_VongLapTrongJava/Thuc_hanh/Thuc_hanh.iml" />
       <module fileurl="file://$PROJECT_DIR$/SS1_introduction_to_java/bai_tap/bai_tap.iml" filepath="$PROJECT_DIR$/SS1_introduction_to_java/bai_tap/bai_tap.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SS1_introduction_to_java/introduction_to_java.iml" filepath="$PROJECT_DIR$/SS1_introduction_to_java/introduction_to_java.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/module2.iml" filepath="$PROJECT_DIR$/.idea/module2.iml" />
       <module fileurl="file://$PROJECT_DIR$/SS1_introduction_to_java/thuc_hanh/thuc_hanh.iml" filepath="$PROJECT_DIR$/SS1_introduction_to_java/thuc_hanh/thuc_hanh.iml" />
       <module fileurl="file://$PROJECT_DIR$/untitled/untitled.iml" filepath="$PROJECT_DIR$/untitled/untitled.iml" />
