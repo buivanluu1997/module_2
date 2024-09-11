@@ -2,7 +2,7 @@ package ss3_mang_va_phuong_thuc_trong_java.bai_tap;
 
 import java.util.Scanner;
 
-public class Mang_2_chieu_tinh_tong_cac_duong_cheo_chinh_cua_ma_tran {
+public class TongDuongCheo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int size;

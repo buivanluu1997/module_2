@@ -1,6 +1,6 @@
 package ss3_mang_va_phuong_thuc_trong_java.bai_tap;
 
-public class Tim_ptu_lon_nhat_trong_mang_2_chieu {
+public class TimPhanTuLonNhat {
     public static void main(String[] args) {
         double[][] array = {{1.0, 3.0, 5.0, 4.0},
                             {2.0, 4.0, 7.0, 9.0},

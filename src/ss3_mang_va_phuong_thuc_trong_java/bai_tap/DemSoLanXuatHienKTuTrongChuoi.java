@@ -2,7 +2,7 @@ package ss3_mang_va_phuong_thuc_trong_java.bai_tap;
 
 import java.util.Scanner;
 
-public class Dem_so_lan_xuat_hien_ki_tu_trong_chuoi {
+public class DemSoLanXuatHienKTuTrongChuoi {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập chuỗi: ");

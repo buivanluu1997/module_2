@@ -1,10 +1,8 @@
 package ss3_mang_va_phuong_thuc_trong_java.bai_tap;
 
-import ss1_introduction_to_java.thuc_hanh.SystemTime;
-
 import java.util.Scanner;
 
-public class Tinh_tong_cac_so_o_mot_cot_xac_dinh {
+public class TongCacSoO1Cot {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int row;

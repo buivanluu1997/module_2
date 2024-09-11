@@ -2,7 +2,7 @@ package ss3_mang_va_phuong_thuc_trong_java.test;
 
 import java.util.Scanner;
 
-public class Test_xoa_ptu_vao_mang {
+public class TestXoaPhanTuVaoMang {
     public static void main(String[] args) {
         int[] arr = {10, 4, 6, 7, 8, 6, 0, 0, 0, 0};
         Scanner scanner = new Scanner(System.in);

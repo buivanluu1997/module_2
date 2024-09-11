@@ -2,7 +2,7 @@ package ss3_mang_va_phuong_thuc_trong_java.thuc_hanh;
 
 import java.util.Scanner;
 
-public class Ung_dung_dem_so_luong_sinh_vien_do {
+public class DemSoLuongSinhVien {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int size;

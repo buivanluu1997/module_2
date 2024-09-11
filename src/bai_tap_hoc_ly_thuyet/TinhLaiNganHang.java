@@ -2,7 +2,7 @@ package bai_tap_hoc_ly_thuyet;
 
 import java.util.Scanner;
 
-public class Bai_tap_tinh_lai_ngan_hang {
+public class TinhLaiNganHang {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhap vao so ten gui: ");

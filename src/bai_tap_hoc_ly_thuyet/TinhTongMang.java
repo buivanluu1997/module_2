@@ -1,6 +1,6 @@
 package bai_tap_hoc_ly_thuyet;
 
-public class Tinh_tong_mang {
+public class TinhTongMang {
     public static void main(String[] args) {
         int [] number = {1,4,7,8};
         int total = 0;

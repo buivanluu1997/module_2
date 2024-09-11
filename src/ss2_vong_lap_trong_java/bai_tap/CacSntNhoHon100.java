@@ -1,20 +1,14 @@
 package ss2_vong_lap_trong_java.bai_tap;
 
-import java.util.Scanner;
-
-public class HienThi20SoNguyenToDauTien {
+public class CacSntNhoHon100 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter number: ");
-        int number = scanner.nextInt();
-        int count = 0;
         int n = 2;
-        while (count < number) {
+        while (n < 100) {
             boolean check = true;
             if (n == 2) {
                 check = true;
             } else {
-                for (int i = 2; i < n; i++) {
+                for (int i = 2; i <= Math.sqrt(n); i++) {
                     if (n % i == 0) {
                         check = false;
                         break;
@@ -22,8 +16,7 @@ public class HienThi20SoNguyenToDauTien {
                 }
             }
             if (check) {
-                count++;
-                System.out.println(n);
+                System.out.print(n + " ");
             }
             n++;
         }

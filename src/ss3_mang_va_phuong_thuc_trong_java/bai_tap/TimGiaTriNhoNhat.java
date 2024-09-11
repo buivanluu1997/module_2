@@ -2,7 +2,7 @@ package ss3_mang_va_phuong_thuc_trong_java.bai_tap;
 
 import java.util.Scanner;
 
-public class Tim_gia_tri_nho_nhat_trong_mang {
+public class TimGiaTriNhoNhat {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập độ dài của mảng: ");
