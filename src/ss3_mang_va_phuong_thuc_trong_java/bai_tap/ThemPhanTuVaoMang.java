@@ -18,6 +18,7 @@ public class ThemPhanTuVaoMang {
                 newArr[i] = array[i];
             }
             newArr[index] = number;
+
             for (int i = index+1; i < newArr.length; i++) {
                 newArr[i] = array[i-1];
             }
