@@ -12,18 +12,18 @@ public class Tinh_tong_cac_so_o_mot_cot_xac_dinh {
         do {
             System.out.print("Nhập số hàng: ");
             row = scanner.nextInt();
-            if (row > 5) {
+            if (row > 10) {
                 System.out.println("Nhập lại số hàng( số hàng <= 5)");
             }
-        } while (row > 5);
+        } while (row > 10);
         do {
             System.out.print("Nhập số cột: ");
             column = scanner.nextInt();
-            if (column > 7) {
+            if (column > 20) {
                 System.out.println("Nhập lại số hàng( số hàng <= 7)");
 
             }
-        } while (column > 7);
+        } while (column > 20);
 
         int[][] array = new int[row][column];
         for (int i = 0; i < row; i++) {
