@@ -1,6 +1,6 @@
 package ss6_tinh_ke_thua.thuc_hanh;
 
-import ss7_abstract_interface.interface_colorable.Colorable;
+import ss7_abstract_interface.bai_tap.interface_colorable.Colorable;
 
 public class Circle extends Shape implements Colorable {
     private double radius = 1.0;

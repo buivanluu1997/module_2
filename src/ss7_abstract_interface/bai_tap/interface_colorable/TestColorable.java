@@ -1,4 +1,4 @@
-package ss7_abstract_interface.interface_colorable;
+package ss7_abstract_interface.bai_tap.interface_colorable;
 
 import ss6_tinh_ke_thua.thuc_hanh.Circle;
 import ss6_tinh_ke_thua.thuc_hanh.Rectangle;
