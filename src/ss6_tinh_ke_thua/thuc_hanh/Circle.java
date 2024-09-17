@@ -1,9 +1,16 @@
 package ss6_tinh_ke_thua.thuc_hanh;
 
-public class Circle extends Shape {
+import ss7_abstract_interface.interface_colorable.Colorable;
+
+public class Circle extends Shape implements Colorable {
     private double radius = 1.0;
 
     public Circle() {
+    }
+
+    @Override
+    public double Area() {
+        return radius * radius * Math.PI;
     }
 
     public Circle(double radius) {
@@ -37,5 +44,10 @@ public class Circle extends Shape {
                 + getRadius()
                 + ", which is a subclass of "
                 + super.toString();
+    }
+
+    @Override
+    public void howToColor() {
+        System.out.println("Color all four sides.");
     }
 }

@@ -1,6 +1,10 @@
 package ss6_tinh_ke_thua.thuc_hanh;
 
-public class Square extends Rectangle {
+
+
+import java.util.Comparator;
+
+public class Square extends Rectangle{
     public Square() {
     }
 
