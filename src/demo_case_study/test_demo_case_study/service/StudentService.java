@@ -23,7 +23,6 @@ public class StudentService implements IStudentService{
     @Override
     public void add(Student student){
         studentRepository.add(student);
-
     }
     @Override
     public void delete(int id) {
