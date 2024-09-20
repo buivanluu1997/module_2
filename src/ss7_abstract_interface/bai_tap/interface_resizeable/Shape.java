@@ -1,6 +1,6 @@
 package ss7_abstract_interface.bai_tap.interface_resizeable;
 
-public class Shape implements Resizeable {
+public class Shape {
     protected String color = "green";
     protected boolean filled = true;
 
@@ -34,9 +34,5 @@ public class Shape implements Resizeable {
                 + getColor()
                 + " and "
                 + (isFilled() ? "filled" : "not filled");
-    }
-
-    @Override
-    public void resize(double parcent) {
     }
 }

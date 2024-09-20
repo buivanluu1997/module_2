@@ -15,6 +15,7 @@ public class ComparableCircleTest {
         }
 
         Arrays.sort(comparableCircles);
+
         System.out.println("Sap xep sau: ");
         for (ComparableCircle comparableCircle : comparableCircles) {
             System.out.println(comparableCircle);

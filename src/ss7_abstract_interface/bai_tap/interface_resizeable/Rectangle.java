@@ -1,6 +1,6 @@
 package ss7_abstract_interface.bai_tap.interface_resizeable;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape implements Resizeable{
     protected double width;
     protected double height;
 
@@ -13,11 +13,7 @@ public class Rectangle extends Shape {
         this.width = width;
         this.height = height;
     }
-    @Override
-    public void resize(double percent) {
-        width *= (1 + percent / 100);
-        height *= (1 + percent / 100);
-    }
+
 
     public double getWidth() {
         return width;
@@ -34,5 +30,11 @@ public class Rectangle extends Shape {
     @Override
     public String toString() {
         return "Rectangle{width=" + width + ", height=" + height + ", Area = " + getArea() + "}";
+    }
+
+    @Override
+    public void resize(double parcent) {
+      width *= (1 + (parcent / 100));
+      height *= (1 + (parcent / 100));
     }
 }

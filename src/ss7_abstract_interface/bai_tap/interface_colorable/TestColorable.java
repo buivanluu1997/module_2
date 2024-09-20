@@ -18,7 +18,7 @@ public class TestColorable {
 
         for (Shape shape : shapes) {
             if (shape instanceof Colorable) {
-                ((Colorable) shape).howToColor();
+               ((Colorable) shape).howToColor();
             }
         }
     }
