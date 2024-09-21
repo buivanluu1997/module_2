@@ -1,12 +1,14 @@
 package quan_ly_khach_hang.controller;
 
 import quan_ly_khach_hang.model.Customer;
+import quan_ly_khach_hang.repository.ICustomerRipository;
 import quan_ly_khach_hang.service.CustomerService;
+import quan_ly_khach_hang.service.ICustomerService;
 
 import java.util.Scanner;
 
 public class CustomerController {
-    private static CustomerService customerService = new CustomerService();
+    private static ICustomerService customerService = new CustomerService();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void showCustomerMenu() {
@@ -16,7 +18,8 @@ public class CustomerController {
                     "2. Thêm khách hàng \n" +
                     "3. Xoá khách hàng \n" +
                     "4. Tìm tên khách hàng \n" +
-                    "5. Thoát");
+                    "5. Tìm id khách hàng \n" +
+                    "6. Thoát");
             int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
@@ -30,10 +33,16 @@ public class CustomerController {
                 case 3:
                     System.out.println("<================================Xoá khách hàng===============================>");
                     customerService.delete(deleteCustomer());
+                    break;
                 case 4:
                     System.out.println("<===============================Tìm tên khách hàng===============================>");
                     customerService.searchName(searchNameCustomer());
+                    break;
                 case 5:
+                    System.out.println("<===============================Tìm id khách hàng================================>");
+                    customerService.searchId(searchId());
+                    break;
+                case 6:
                     System.exit(0);
             }
 
@@ -65,4 +74,11 @@ public class CustomerController {
         String name = scanner.nextLine();
         return name;
     }
+
+    public static int searchId() {
+        System.out.println("Nhập id bạn muốn tìm kiếm:");
+        int id = Integer.parseInt(scanner.nextLine());
+        return id;
+    }
+
 }
