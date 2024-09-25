@@ -36,4 +36,9 @@ public class CustomerService implements ICustomerService{
     public void search(String name) {
         customerRipository.search(name);
     }
+
+    @Override
+    public List<Customer> sortID() {
+        return customerRipository.sortID();
+    }
 }

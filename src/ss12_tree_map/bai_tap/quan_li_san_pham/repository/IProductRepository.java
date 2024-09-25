@@ -1,5 +1,6 @@
 package ss12_tree_map.bai_tap.quan_li_san_pham.repository;
 
+import quan_ly_khach_hang.model.Customer;
 import ss12_tree_map.bai_tap.quan_li_san_pham.model.Product;
 
 import java.util.List;
@@ -17,5 +18,7 @@ public interface IProductRepository {
 
     List<Product> search(String name);
 
-    List<Product> sortedProducts (int typeSort) ;
+    List<Product> ascendingId();
+
+    List<Product> sortName();
 }

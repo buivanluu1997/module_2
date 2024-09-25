@@ -3,39 +3,50 @@ package quan_ly_khach_hang.service;
 import quan_ly_khach_hang.model.Customer;
 import quan_ly_khach_hang.repository.CustomerRipository;
 
+import java.util.List;
+
 public class CustomerService implements ICustomerService {
     private CustomerRipository customerRopository = new CustomerRipository();
 
+
     @Override
-    public void getAll() {
-        customerRopository.getAll();
+    public List<Customer> getAll() {
+        return customerRopository.getAll();
     }
 
     @Override
-    public void displayCustomer() {
-        for (Customer customer : customerRopository.getAll()) {
-            System.out.println(customer);
-        }
+    public List<Customer> displayCustomer() {
+        return customerRopository.displayCustomer();
     }
 
     @Override
     public void add(Customer customer) {
-        customerRopository.add(customer);
+        this.customerRopository.add(customer);
     }
 
     @Override
-    public void delete(int index) {
-        customerRopository.delete(index);
+    public void delete(int id) {
+        customerRopository.delete(id);
     }
 
     @Override
-    public void searchName(String name) {
-        customerRopository.searchName(name);
+    public Customer findByID(int id) {
+        return customerRopository.findByID(id);
     }
 
     @Override
-    public void searchId(int id) {
-        customerRopository.searchID(id);
+    public List<Customer> searchName(String name) {
+        return customerRopository.searchName(name);
+    }
+
+    @Override
+    public List<Customer> sortName() {
+        return customerRopository.sortName();
+    }
+
+    @Override
+    public boolean edit(Customer editCustomer) {
+        return customerRopository.edit(editCustomer);
     }
 
 

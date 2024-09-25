@@ -41,7 +41,13 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> sortedProducts(int typeSort) {
-        return  this.productRepository.sortedProducts(typeSort);
+    public List<Product> ascendingId() {
+        return productRepository.ascendingId();
     }
+
+    @Override
+    public List<Product> sortName() {
+        return productRepository.sortName();
+    }
+
 }

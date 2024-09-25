@@ -34,7 +34,10 @@ public class ProductController {
         return this.productService.search(name);
     }
 
-    public List<Product> sortedProducts (int typeSort) {
-        return productService.sortedProducts(typeSort);
+    public List<Product> ascendingId() {
+        return this.productService.ascendingId();
+    }
+    public List<Product> sortName(){
+        return this.productService.sortName();
     }
 }

@@ -1,6 +1,6 @@
 package ss12_tree_map.bai_tap.quan_li_san_pham.model;
 
-public class Product implements Comparable<Product> {
+public class Product {
     private int id;
     private String name;
     private double price;
@@ -47,8 +47,4 @@ public class Product implements Comparable<Product> {
                 '}';
     }
 
-    @Override
-    public int compareTo(Product other) {
-        return Double.compare(this.getPrice(), other.getPrice());
-    }
 }

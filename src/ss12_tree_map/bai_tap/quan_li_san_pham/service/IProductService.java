@@ -16,6 +16,11 @@ public interface IProductService {
     boolean edit(Product editProduct);
 
     List<Product> search(String name);
-    List<Product> sortedProducts (int typeSort) ;
+
+    List<Product> ascendingId();
+
+    List<Product> sortName();
+
+    ;
 
 }

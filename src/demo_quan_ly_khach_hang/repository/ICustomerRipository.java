@@ -12,4 +12,6 @@ public interface ICustomerRipository {
     void delete(int id);
 
     void search(String name);
+
+    List<Customer> sortID();
 }

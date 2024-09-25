@@ -14,5 +14,6 @@ public interface ICustomerService {
     void delete(int id);
 
     void search(String name);
+    List<Customer> sortID();
 
 }

@@ -1,8 +1,10 @@
 package demo_quan_ly_khach_hang.repository;
 
+import demo_quan_ly_khach_hang.model.ComparatorId;
 import demo_quan_ly_khach_hang.model.Customer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CustomerRipository implements ICustomerRipository {
@@ -43,5 +45,13 @@ public class CustomerRipository implements ICustomerRipository {
                 System.out.println(customer);
             }
         }
+    }
+
+    @Override
+    public List<Customer> sortID() {
+        List<Customer> result;
+        result = customersList;
+        Collections.sort(result, new ComparatorId());
+        return result;
     }
 }

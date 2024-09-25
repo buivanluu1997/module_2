@@ -17,7 +17,8 @@ public class CustomerController {
                     "2. them \n" +
                     "3. xoa \n" +
                     "4. tim kiem ten \n" +
-                    "5. thoat");
+                    "5. sap xep theo id \n" +
+                    "6. thoat");
 
             int choose = Integer.parseInt(scanner.nextLine());
 
@@ -39,10 +40,20 @@ public class CustomerController {
                     customerService.search(inputName());
                     break;
                 case 5:
+                    System.out.println("--------------------------------sap xep theo id-------------------------------");
+                    sortIdCustomer();
+                case 6:
                     System.exit(0);
             }
         }
     }
+
+    public void sortIdCustomer() {
+        for (Customer customer : customerService.sortID()) {
+            System.out.println(customer);
+        }
+    }
+
     public Customer inputCustomer() {
         System.out.println("Nhap id: ");
         int id = Integer.parseInt(scanner.nextLine());

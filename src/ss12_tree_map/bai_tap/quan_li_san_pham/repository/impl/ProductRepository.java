@@ -1,10 +1,11 @@
 package ss12_tree_map.bai_tap.quan_li_san_pham.repository.impl;
 
 import ss12_tree_map.bai_tap.quan_li_san_pham.model.Product;
+import ss12_tree_map.bai_tap.quan_li_san_pham.model.SortIdAscending;
+import ss12_tree_map.bai_tap.quan_li_san_pham.model.SortName;
 import ss12_tree_map.bai_tap.quan_li_san_pham.repository.IProductRepository;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Collections;
 
@@ -74,19 +75,19 @@ public class ProductRepository implements IProductRepository {
         return result;
     }
 
-    @Override
-    public List<Product> sortedProducts(int typeSort) {
-        List<Product> result = new ArrayList<>();
-        result = productList;
 
-        if (typeSort == 1) {
-            Collections.sort(result);
-        }
-        if (typeSort == 2) {
-            Collections.sort(result);
-            result = result.reversed();
-        }
-        return result;
+    @Override
+    public List<Product> ascendingId() {
+        List<Product> resultAscendingId = productList;
+        Collections.sort(resultAscendingId, new SortIdAscending());
+        return resultAscendingId;
+    }
+
+    @Override
+    public List<Product> sortName() {
+        List<Product> resultSortName = productList;
+        Collections.sort(resultSortName, new SortName());
+        return resultSortName;
     }
 
 

@@ -19,7 +19,7 @@ public class ProductView {
                     "3. Xoá sản phẩm theo id \n" +
                     "4. Hiển thị danh sách sản phẩm \n" +
                     "5. Tìm kiếm sản phẩm theo tên \n" +
-                    "6. Sắp xếp sản phẩm tăng dần, giảm dần theo giá \n" +
+                    "6. Sắp xếp sản phẩm tăng dần theo id hoặc theo tên \n" +
                     "7. Thoát");
             System.out.println("Chọn chức năng: ");
             int choose = Integer.parseInt(scanner.nextLine());
@@ -47,7 +47,6 @@ public class ProductView {
                     break;
                 case 6:
                     System.out.println("<------------------------------Sắp xếp sản phẩm------------------------------------>");
-
                     sortProduct();
                     break;
             }
@@ -57,15 +56,26 @@ public class ProductView {
     private void sortProduct() {
         System.out.println("Chọn kiểu sắp xếp");
         System.out.println("1. Sắp xếp từ bé đến lớn");
-        System.out.println("2. Sắp xếp từ lớn đến bé");
+        System.out.println("2. Sắp xếp theo tên");
         int typeSort = Integer.parseInt(scanner.nextLine());
-
-        List<Product> products = productController.sortedProducts(typeSort);
-        for (Product i : products) {
-            System.out.println(i.toString());
+        switch (typeSort) {
+            case 1:
+                List<Product> sortIDs = productController.ascendingId();
+                for (Product product : sortIDs) {
+                    System.out.println(product.toString());
+                }
+                break;
+            case 2:
+                List<Product> sortNames = productController.sortName();
+                for (Product product : sortNames) {
+                    System.out.println(product.toString());
+                }
+                break;
+            default:
+                System.out.println("Chọn số sai");
+                break;
         }
     }
-
     private void searchNameProduct() {
         System.out.println("Nhập tên sản phẩm muốn tìm kiếm: ");
         String name = scanner.nextLine();
@@ -77,7 +87,6 @@ public class ProductView {
             System.out.println(product.toString());
         }
     }
-
     private void updateProduct() {
         System.out.println("Nhập id muốn sửa: ");
         int id = Integer.parseInt(scanner.nextLine());

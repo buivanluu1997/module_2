@@ -1,6 +1,6 @@
 package quan_ly_khach_hang.model;
 
-public class Customer {
+public class Customer implements Comparable<Customer> {
     private int id;
     private String name;
     private String address;
@@ -54,4 +54,13 @@ public class Customer {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
+
+    @Override
+    public int compareTo(Customer customer) {
+        String name1 = this.getName().split(" ")[this.getName().split(" ").length-1];
+        String name2 = customer.getName().split(" ")[customer.getName().split(" ").length-1];
+
+        return name1.compareTo(name2);
+    }
+
 }

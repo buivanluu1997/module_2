@@ -2,16 +2,23 @@ package quan_ly_khach_hang.service;
 
 import quan_ly_khach_hang.model.Customer;
 
+import java.util.List;
+
 public interface ICustomerService {
-    public void getAll();
 
-    public void displayCustomer();
+    List<Customer> getAll();
 
-    public void add(Customer customer);
+    List<Customer> displayCustomer();
 
-    public void delete(int index);
+    void add(Customer customer);
 
-    public void searchName(String name);
+    void delete(int id);
 
-    public void searchId(int id);
+    Customer findByID(int id);
+
+    List<Customer> searchName(String name);
+
+    public List<Customer> sortName();
+
+    boolean edit(Customer editCustomer);
 }

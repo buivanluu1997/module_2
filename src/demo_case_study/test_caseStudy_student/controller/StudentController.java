@@ -1,6 +1,7 @@
 package demo_case_study.test_caseStudy_student.controller;
 
 
+
 import demo_case_study.test_caseStudy_student.model.Student;
 import demo_case_study.test_caseStudy_student.service.IStudentService;
 import demo_case_study.test_caseStudy_student.service.StudentService;
@@ -11,11 +12,13 @@ public class StudentController {
     private static Scanner scanner = new Scanner(System.in);
     private static IStudentService studentService = new StudentService();
 
+
     public static void ShowStudentMenu() {
 
 
         while (true) {
             System.out.println("Chọn chức năng: ");
+            System.out.println("nnn");
             System.out.println("1. Hiển thị \n" +
                     "2. Thêm mới \n" +
                     "3. Xoá \n" +

@@ -3,6 +3,7 @@ package quan_ly_khach_hang.repository;
 import quan_ly_khach_hang.model.Customer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CustomerRipository implements ICustomerRipository {
@@ -10,14 +11,20 @@ public class CustomerRipository implements ICustomerRipository {
 
     public CustomerRipository() {
         this.customerList = new ArrayList<>();
-        customerList.add(new Customer(1,"Nguyễn Ngọc Nhân", "Đà Nẵng", "0984512425"));
-        customerList.add(new Customer(2,"Nguyễn Như Ngọc", "Huế", "021547850"));
-        customerList.add(new Customer(3,"Lê Văn Hoàng", "Quảng Nam", "0968745213"));
-        customerList.add(new Customer(4,"Hồ Yến Nhi", "Quảng Trị", "0587451235"));
+        customerList.add(new Customer(1, "Nguyễn Ngọc Nhân", "Đà Nẵng", "0984512425"));
+        customerList.add(new Customer(4, "Nguyễn Như Ngọc", "Huế", "021547850"));
+        customerList.add(new Customer(3, "Lê Văn Hoàng", "Quảng Nam", "0968745213"));
+        customerList.add(new Customer(2, "Hồ Yến Nhi", "Quảng Trị", "0587451235"));
     }
+
 
     @Override
     public List<Customer> getAll() {
+        return customerList;
+    }
+
+    @Override
+    public List<Customer> displayCustomer() {
         return customerList;
     }
 
@@ -28,44 +35,55 @@ public class CustomerRipository implements ICustomerRipository {
 
     @Override
     public void delete(int id) {
-        int index = -1;
         for (int i = 0; i < customerList.size(); i++) {
             if (customerList.get(i).getId() == id) {
-                index = i;
+                customerList.remove(i);
                 break;
             }
         }
-        customerList.remove(index);
     }
 
     @Override
-    public void searchName(String name) {
-        boolean check = false;
-        for (Customer customer : customerList) {
-            if (customer.getName() != null && customer.getName().toLowerCase().contains(name.toLowerCase())) {
-                System.out.println(customer);
-                check = true;
-            }
-        }
-        if (!check) {
-            System.out.println("Tên tìm kiếm không có trong danh sách");
-        }
-    }
-
-    @Override
-    public void searchID(int id) {
-        boolean check = false;
+    public Customer findByID(int id) {
         for (Customer customer : customerList) {
             if (customer.getId() == id) {
-                System.out.println(customer);
-                check = true;
+                return customer;
             }
         }
-        if (!check) {
-            System.out.println("Id không có trong danh sách");
-        }
+        return null;
     }
 
+    @Override
+    public List<Customer> searchName(String name) {
+        List<Customer> result = new ArrayList<>();
+
+        for (Customer customer : customerList) {
+            if (customer.getName().toLowerCase().contains(name.toLowerCase())) {
+                result.add(customer);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<Customer> sortName() {
+        List<Customer> customers = customerList;
+        Collections.sort(customers);
+        return customers;
+    }
+
+    @Override
+    public boolean edit(Customer editCustomer) {
+        for (Customer customer : customerList) {
+            if (customer.getId() == editCustomer.getId()) {
+                customer.setName(editCustomer.getName());
+                customer.setAddress(editCustomer.getAddress());
+                customer.setPhoneNumber(editCustomer.getPhoneNumber());
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

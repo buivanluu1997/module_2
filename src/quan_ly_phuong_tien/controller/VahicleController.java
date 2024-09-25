@@ -41,17 +41,17 @@ public class VahicleController {
         switch (index) {
             case 1:
                 for (Truck truck : vahicleService.displayListTruck()) {
-                    System.out.println(truck);
+                    System.out.println(truck.displayInfo());
                 }
                 break;
             case 2:
                 for (Oto oto : vahicleService.displayListOto()) {
-                    System.out.println(oto);
+                    System.out.println(oto.displayInfo());
                 }
                 break;
             case 3:
                 for (Motorcycle motorcycle : vahicleService.displayListMotorcycle()) {
-                    System.out.println(motorcycle);
+                    System.out.println(motorcycle.displayInfo());
                 }
                 break;
             default:

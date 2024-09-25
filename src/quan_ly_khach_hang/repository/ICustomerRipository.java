@@ -5,13 +5,19 @@ import quan_ly_khach_hang.model.Customer;
 import java.util.List;
 
 public interface ICustomerRipository {
-    public List<Customer> getAll();
+     List<Customer> getAll();
 
-    public void add(Customer customer);
+     List<Customer> displayCustomer();
 
-    public void delete(int id);
+     void add(Customer customer);
 
-    public void searchName(String name);
+     void delete(int id);
 
-    public void searchID(int id);
+     Customer findByID(int id);
+
+     List<Customer> searchName(String name);
+
+     List<Customer> sortName();
+
+     boolean edit(Customer editCustomer);
 }
