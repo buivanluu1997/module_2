@@ -21,4 +21,7 @@ public interface IVehicleRepository {
     void addVahicle(Truck truck);
 
     void addVahicle(Motorcycle motorcycle);
+
+    boolean deleteVehicle(String licensePlate);
+
 }

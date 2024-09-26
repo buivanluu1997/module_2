@@ -1,5 +1,7 @@
 package quan_ly_phuong_tien.model;
 
+import java.util.Objects;
+
 public abstract class Vehicle {
     private String licensePlate; // biển kiểm soát
     private Manufacturer manufacturer; // hãng sản xuất
@@ -52,4 +54,5 @@ public abstract class Vehicle {
         return "Biển kiểm soát: " + licensePlate + ", hãng sản xuất: { " + manufacturer + " } "
                 + ", năm sản xuất: " + year + ", chủ sở hữu: " + owner;
     }
+
 }

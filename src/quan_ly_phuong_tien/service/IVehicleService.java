@@ -21,4 +21,7 @@ public interface IVehicleService {
     void addVehicle(Motorcycle motorcycle);
 
     void addVehicle(Truck truck);
+
+    boolean deleteVehicle(String licensePlate);
+
 }

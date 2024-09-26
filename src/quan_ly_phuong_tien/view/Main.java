@@ -1,10 +1,12 @@
 package quan_ly_phuong_tien.view;
 
-import quan_ly_phuong_tien.controller.VahicleController;
+
+import quan_ly_phuong_tien.controller.VehicleController;
+import quan_ly_phuong_tien.repository.VehicleRipository;
 
 public class Main {
     public static void main(String[] args) {
-        VahicleController vahicleController = new VahicleController();
-        vahicleController.showCustomerMenu();
+        VehicleController vehicleController = new VehicleController();
+        vehicleController.showCustomerMenu();
     }
 }

@@ -10,7 +10,7 @@ import quan_ly_phuong_tien.repository.VehicleRipository;
 import java.util.List;
 
 
-public class VehicleService implements IVehicleService {
+  public class VehicleService implements IVehicleService {
     private IVehicleRepository vehicleRipository = new VehicleRipository();
 
     @Override
@@ -47,4 +47,11 @@ public class VehicleService implements IVehicleService {
     public void addVehicle(Truck truck) {
         vehicleRipository.addVahicle(truck);
     }
-}
+
+      @Override
+      public boolean deleteVehicle(String licensePlate) {
+          System.out.println("123");
+          return vehicleRipository.deleteVehicle(licensePlate);
+      }
+
+  }
