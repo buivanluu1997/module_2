@@ -20,4 +20,6 @@ public interface ICustomerRipository {
      List<Customer> sortName();
 
      boolean edit(Customer editCustomer);
+
+     List<Customer> sortId();
 }

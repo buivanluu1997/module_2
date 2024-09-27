@@ -49,5 +49,10 @@ public class CustomerService implements ICustomerService {
         return customerRopository.edit(editCustomer);
     }
 
+    @Override
+    public List<Customer> sortId() {
+        return customerRopository.sortId();
+    }
+
 
 }

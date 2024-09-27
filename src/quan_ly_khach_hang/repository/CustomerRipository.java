@@ -85,5 +85,14 @@ public class CustomerRipository implements ICustomerRipository {
         return false;
     }
 
+    @Override
+    public List<Customer> sortId() {
+       List<Customer> result = new ArrayList<>();
+       result = customerList;
+       SortIdCustomer sortIdCustomer = new SortIdCustomer();
+       Collections.sort(result, sortIdCustomer);
+       return result;
+    }
+
 
 }

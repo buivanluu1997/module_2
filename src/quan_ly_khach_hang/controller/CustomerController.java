@@ -22,7 +22,8 @@ public class CustomerController {
                     "5. Tìm id khách hàng \n" +
                     "6. Sắp xếp theo tên \n" +
                     "7. Sửa thông tin khách hàng \n" +
-                    "8. Thoát");
+                    "8. Sắp xếp id từ cao đến thấp \n" +
+                    "9. Thoát");
             int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
@@ -53,6 +54,10 @@ public class CustomerController {
                     System.out.println("<---------------------------------Sửa thông tin khách hàng--------------------------------->");
                     editCustomer();
                 case 8:
+                    System.out.println("<---------------------------------Sắp xếp id từ cao đến thấp--------------------------------->");
+                    customerService.sortId();
+                    break;
+                case 9:
                     System.exit(0);
             }
 

@@ -21,4 +21,6 @@ public interface ICustomerService {
     public List<Customer> sortName();
 
     boolean edit(Customer editCustomer);
+
+    List<Customer> sortId();
 }
