@@ -22,7 +22,7 @@ public class ReadFileCsv {
                 int id = Integer.parseInt(arr[0]);
                 String code = arr[1];
                 String name = arr[2];
-                countries.add(new Country(id, code, name)); 
+                countries.add(new Country(id, code, name));
             }
             bufferedReader.close();
         } catch (Exception e) {

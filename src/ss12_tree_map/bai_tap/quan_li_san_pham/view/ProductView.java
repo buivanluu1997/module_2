@@ -49,6 +49,8 @@ public class ProductView {
                     System.out.println("<------------------------------Sắp xếp sản phẩm------------------------------------>");
                     sortProduct();
                     break;
+                case 7:
+                    System.exit(0);
             }
         }
     }
