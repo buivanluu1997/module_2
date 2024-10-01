@@ -39,7 +39,7 @@ public class ReadFileCsv {
 
     public static void main(String[] args) {
         ReadFileCsv readFileCsv = new ReadFileCsv();
-        String path = "D:\\codegym\\module2\\src\\ss16_io_text_file\\bai_tap\\doc_file_csv\\csv";
+        String path = "D:\\codegym\\module2\\src\\ss16_io_text_file\\bai_tap\\doc_file_csv\\country.country.csv";
         List<Country> countryList = readFileCsv.readFile(path);
         readFileCsv.ShowCountry(countryList);
     }

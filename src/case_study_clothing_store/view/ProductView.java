@@ -48,6 +48,8 @@ public class ProductView {
                         System.out.println("<----------------------------Tìm kiếm sản phẩm---------------------------->");
                         searchName();
                         break;
+                    case 6:
+                        System.exit(0);
                 }
             } catch (Exception e) {
                 System.out.println("Phải nhập số nguyên.");

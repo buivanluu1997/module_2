@@ -35,4 +35,14 @@ public class CarService implements IVehicleService<Car> {
         return carRepository.searchLicensePlate(licensePlate);
     }
 
+    @Override
+    public void readFile() {
+        carRepository.readFile();
+    }
+
+    @Override
+    public void writeFile() {
+        carRepository.writeFile();
+    }
+
 }

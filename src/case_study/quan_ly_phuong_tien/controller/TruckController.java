@@ -33,4 +33,11 @@ public class TruckController {
         return truckService.searchLicensePlate(licensePlate);
     }
 
+    public void readFile() {
+        truckService.readFile();
+    }
+
+    public void writeFile() {
+        truckService.writeFile();
+    }
 }

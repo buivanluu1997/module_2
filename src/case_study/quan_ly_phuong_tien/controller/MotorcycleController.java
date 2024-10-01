@@ -33,4 +33,11 @@ public class MotorcycleController {
         return motorcycleService.searchLicensePlate(licensePlate);
     }
 
+    public void readFile() {
+        motorcycleService.readFile();
+    }
+
+    public void writeFile() {
+        motorcycleService.writeFile();
+    }
 }

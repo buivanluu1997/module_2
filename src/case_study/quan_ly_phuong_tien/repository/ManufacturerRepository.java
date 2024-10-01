@@ -15,4 +15,15 @@ public class ManufacturerRepository {
         manufacturerList.add(new Manufacturer("H004", "Huyndai", "Hàn Quốc"));
     }
 
+
+    public Manufacturer getById(String id)
+    {
+        for(Manufacturer manufacturer : manufacturerList){
+            if(manufacturer.getManufacturerId().equals(id)){
+                return  manufacturer;
+            }
+        }
+        return  null;
+    }
 }
+

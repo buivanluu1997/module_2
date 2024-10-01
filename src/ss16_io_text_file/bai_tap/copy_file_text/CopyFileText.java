@@ -42,9 +42,9 @@ public class CopyFileText {
 
     public static void main(String[] args) {
         CopyFileText copyFileText = new CopyFileText();
-        String readPath = "D:\\codegym\\module2\\src\\ss16_io_text_file\\bai_tap\\copy_file_text\\source_file";
+        String readPath = "D:\\codegym\\module2\\src\\ss16_io_text_file\\bai_tap\\copy_file_text\\source_file.txt";
         List<String> lists = copyFileText.readFile(readPath);
-        String wirePath = "D:\\codegym\\module2\\src\\ss16_io_text_file\\bai_tap\\copy_file_text\\target_file";
+        String wirePath = "D:\\codegym\\module2\\src\\ss16_io_text_file\\bai_tap\\copy_file_text\\target_file.txt";
         copyFileText.writeFile(wirePath, lists);
     }
 }

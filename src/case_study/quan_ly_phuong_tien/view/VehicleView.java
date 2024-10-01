@@ -8,7 +8,9 @@ import case_study.quan_ly_phuong_tien.model.Manufacturer;
 import case_study.quan_ly_phuong_tien.model.Motorcycle;
 import case_study.quan_ly_phuong_tien.model.Truck;
 import case_study.quan_ly_phuong_tien.repository.ManufacturerRepository;
+import case_study.quan_ly_phuong_tien.service.FileHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,39 +20,81 @@ public class VehicleView {
     private MotorcycleController motorcycleController = new MotorcycleController();
     private Scanner scanner = new Scanner(System.in);
     private ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
+    private FileHelper fileHelper = new FileHelper();
 
+    public VehicleView(){
+        motorcycleController.readFile();
+        carController.readFile();
+        truckController.readFile();
+    }
     public void renderVehicleMenu() {
         while (true) {
-            System.out.println("QUẢN LÍ PHƯƠNG TIỆN GIAO THÔNG \n" +
-                    "Chọn Chức Năng: \n" +
-                    "1. Thêm mới phương tiện \n" +
-                    "2. Hiển thị phương tiện \n" +
-                    "3. Xoá phương tiện \n" +
-                    "4. Tìm kiếm theo biển kiểm soát \n" +
-                    "5. Thoát");
-            int choose = Integer.parseInt(scanner.nextLine());
+            try {
+                System.out.println("QUẢN LÍ PHƯƠNG TIỆN GIAO THÔNG \n" +
+                        "Chọn Chức Năng: \n" +
+                        "1. Thêm mới phương tiện \n" +
+                        "2. Hiển thị phương tiện \n" +
+                        "3. Xoá phương tiện \n" +
+                        "4. Tìm kiếm theo biển kiểm soát \n" +
+                        "5. Ghi dữ liệu ra file \n" +
+                        "6. Thoát");
+                int choose = Integer.parseInt(scanner.nextLine());
 
-            switch (choose) {
-                case 1:
-                    System.out.println("<------------------------------Thêm mới phương tiện------------------------------>");
-                    newAddVehicle();
-                    break;
-                case 2:
-                    System.out.println("<------------------------------Hiển thị phương tiện------------------------------>");
-                    displaysVehicleTypes();
-                    break;
-                case 3:
-                    System.out.println("<-------------------------Xoá phương tiện theo biển kiểm soát------------------------->");
-                    deleteVehicle();
-                    break;
-                case 4:
-                    System.out.println("<----------------------------Tìm kiếm theo biển kiểm soát---------------------------->");
-                    searchLicensePlate();
-                    break;
-                case 5:
-                    System.exit(0);
-
+                switch (choose) {
+                    case 1:
+                        System.out.println("<------------------------------Thêm mới phương tiện------------------------------>");
+                        newAddVehicle();
+                        break;
+                    case 2:
+                        System.out.println("<------------------------------Hiển thị phương tiện------------------------------>");
+                        displaysVehicleTypes();
+                        break;
+                    case 3:
+                        System.out.println("<-------------------------Xoá phương tiện theo biển kiểm soát------------------------->");
+                        deleteVehicle();
+                        break;
+                    case 4:
+                        System.out.println("<----------------------------Tìm kiếm theo biển kiểm soát---------------------------->");
+                        searchLicensePlate();
+                        break;
+                    case 5:
+                        System.out.println("<----------------------------Ghi dữ liệu ra file---------------------------->");
+                        writeFile();
+                        break;
+                    case 6:
+                        carController.writeFile();
+                        motorcycleController.writeFile();
+                        truckController.writeFile();
+                        System.exit(0);
+                }
+            }catch (Exception e) {
+                System.out.println("Phải chọn số nguyên.");
             }
+
+        }
+    }
+
+    private void writeFile() {
+        System.out.println("Chọn loại phương tiện cần ghi ra dữ liệu: \n" +
+                "1. Xe ô tô \n" +
+                "2. Xe máy \n" +
+                "3. Xe Tải");
+        int chooseVehicle = Integer.parseInt(scanner.nextLine());
+        switch (chooseVehicle) {
+            case 1:
+                carController.writeFile();
+                System.out.println("Đã ghi dữ liệu ô tô vào file thành công");
+                break;
+            case 2:
+                motorcycleController.writeFile();
+                System.out.println("Đã ghi dữ liệu xe máy vào file thành công");
+                break;
+            case 3:
+                truckController.writeFile();
+                System.out.println("Đã ghi dữ liệu xe tải vào file thành công");
+                break;
+            default:
+                System.out.println("Bạn chọn số ngoài 1-3 nên thoát.");
         }
     }
 

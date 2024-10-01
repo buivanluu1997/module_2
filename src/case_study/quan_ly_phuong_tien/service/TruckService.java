@@ -35,4 +35,14 @@ public class TruckService implements IVehicleService<Truck> {
         return truckRepository.searchLicensePlate(licensePlate);
     }
 
+    @Override
+    public void readFile() {
+        truckRepository.readFile();
+    }
+
+    @Override
+    public void writeFile() {
+        truckRepository.writeFile();
+    }
+
 }

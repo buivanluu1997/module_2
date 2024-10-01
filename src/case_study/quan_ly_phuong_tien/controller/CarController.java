@@ -33,5 +33,11 @@ public class CarController {
         return carService.searchLicensePlate(licensePlate);
     }
 
+    public void readFile() {
+        carService.readFile();
+    }
 
+    public void writeFile() {
+        carService.writeFile();
+    }
 }
