@@ -32,12 +32,4 @@ public class MotorcycleController {
     public List<Motorcycle> searchLicensePlate(String licensePlate) {
         return motorcycleService.searchLicensePlate(licensePlate);
     }
-
-    public void readFile() {
-        motorcycleService.readFile();
-    }
-
-    public void writeFile() {
-        motorcycleService.writeFile();
-    }
 }

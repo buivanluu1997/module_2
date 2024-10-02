@@ -21,6 +21,12 @@ public class Motorcycle extends Vehicle{
 
     @Override
     public String displayInfo() {
-        return "Xe máy: " + super.toString() + ", công suất: " + power;
+        return "Xe máy:" + super.toString() + ", công suất: " + power;
+    }
+
+    public String convertMotorcycleToLine() {
+        return "Xe máy:" + "," + this.getLicensePlate() + "," + this.getManufacturer().getManufacturerId() + ","
+                + this.getManufacturer().getManufacturerName() + "," + this.getManufacturer().getCountry() + ","
+                + this.getYear() + "," + this.getOwner() + "," + this.getPower();
     }
 }

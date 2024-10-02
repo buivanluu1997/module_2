@@ -9,7 +9,7 @@ public interface IVehicleRepository<T> {
 
     List<T> getAll();
 
-    void writeFileCustomer(List<T> list);
+    void writeFileVehicle(List<T> list);
 
     T findLicensePlate(String licensePlate);
 

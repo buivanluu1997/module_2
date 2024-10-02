@@ -34,13 +34,4 @@ public class MotorcycleService implements IVehicleService<Motorcycle> {
         return motorcycleRepository.searchLicensePlate(licensePlate);
     }
 
-    @Override
-    public void readFile() {
-        motorcycleRepository.readFile();
-    }
-
-    @Override
-    public void writeFile() {
-        motorcycleRepository.writeFile();
-    }
 }

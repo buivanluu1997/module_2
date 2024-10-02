@@ -2,7 +2,7 @@ package case_study.quan_ly_phuong_tien.repository;
 
 import case_study.quan_ly_phuong_tien.model.Manufacturer;
 import case_study.quan_ly_phuong_tien.model.Motorcycle;
-import case_study.quan_ly_phuong_tien.service.FileHelper;
+import case_study.quan_ly_phuong_tien.util.ReadWriteFile;
 
 
 import java.util.ArrayList;
@@ -10,32 +10,74 @@ import java.util.List;
 
 public class MotorcycleRepository implements IVehicleRepository<Motorcycle> {
 
-    private List<Motorcycle> motorcycleList;
     private ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
-    private FileHelper fileHelper = new FileHelper();
+    private final String FILE_VEHICLE = "src/case_study/quan_ly_phuong_tien/data/vehicle.csv";
 
-    public MotorcycleRepository() {
-        this.motorcycleList = new ArrayList<>();
+
+    @Override
+    public void addVehicle(Motorcycle object) {
+        List<Motorcycle> motorcycleList = getVehicles();
+        motorcycleList.add(object);
+
+        writeFile(motorcycleList);
+
     }
 
     @Override
-    public void addVehicle(Motorcycle motorcycle) {
-        motorcycleList.add(motorcycle);
+    public void writeFile(List<Motorcycle> list) {
+        List<String> stringList = new ArrayList<>();
+        for (Motorcycle motorcycle : list) {
+            String line = motorcycle.convertMotorcycleToLine();
+            stringList.add(line);
+        }
+        ReadWriteFile.writeFile(FILE_VEHICLE, stringList, true);
     }
 
     @Override
     public List<Motorcycle> getVehicles() {
+        List<String> stringList = ReadWriteFile.readFile(FILE_VEHICLE);
+        List<Motorcycle> motorcycleList = new ArrayList<>();
+        for (String line : stringList) {
+            String[] array = line.split(",");
+            if (array[0].equals("Xe máy:")) {
+                String licensePlate = array[1];
+                String manufaturerId = array[2];
+                int year = Integer.parseInt(array[5]);
+                String owner = array[6];
+                double power = Double.parseDouble(array[7]);
+                Manufacturer manufacturer = manufacturerRepository.getById(manufaturerId);
+                Motorcycle motorcycle = new Motorcycle(licensePlate, manufacturer, year, owner, power);
+                motorcycleList.add(motorcycle);
+            }
+        }
         return motorcycleList;
     }
 
+    @Override
+    public Motorcycle getByLicensePlate(String licensePlate) {
+        List<Motorcycle> motorcycleList = getVehicles();
+        for (Motorcycle motorcycle : motorcycleList) {
+            if (motorcycle.getLicensePlate().equals(licensePlate)) {
+                return motorcycle;
+            }
+        }
+        return null;
+    }
 
     @Override
-    public void delete(Motorcycle motorcycle) {
-        motorcycleList.remove(motorcycle);
+    public void delete(Motorcycle object) {
+        List<Motorcycle> motorcycleList = getVehicles();
+        for (int i = 0; i < motorcycleList.size(); i++) {
+            if (motorcycleList.get(i).getLicensePlate().equals(object.getLicensePlate())) {
+                motorcycleList.remove(motorcycleList.get(i));
+            }
+        }
+        writeFile(motorcycleList);
     }
 
     @Override
     public List<Motorcycle> searchLicensePlate(String licensePlate) {
+        List<Motorcycle> motorcycleList = getVehicles();
         List<Motorcycle> result = new ArrayList<>();
 
         for (Motorcycle motorcycle : motorcycleList) {
@@ -45,69 +87,4 @@ public class MotorcycleRepository implements IVehicleRepository<Motorcycle> {
         }
         return result;
     }
-
-    @Override
-    public void readFile() {
-        String filePath = "D:\\codegym\\module2\\src\\case_study\\quan_ly_phuong_tien\\data\\output_motorcycle.txt";
-        List<String> data =  fileHelper.readFile(filePath);
-        for (String item : data){
-
-            String [] cols = item.split(",");
-            if(cols.length == 7 )
-            {
-
-                try {
-                    String palate = cols[0];
-                    String manufacturerId = cols[1];
-                    int year = Integer.parseInt(cols[4]);
-                    String owner = cols[5];
-                    double power = Double.parseDouble(cols[6]);
-
-                    Manufacturer manufacturer = manufacturerRepository.getById(manufacturerId);
-                    Motorcycle motorcycle = new Motorcycle(palate,manufacturer,year,owner,power);
-                    motorcycleList.add(motorcycle);
-                }
-                catch (NumberFormatException e)
-                {
-
-                }
-
-            }
-
-        }
-    }
-
-    @Override
-    public void writeFile() {
-
-        List <String> stringData = new ArrayList<>();
-
-        for(Motorcycle motorcycle : motorcycleList) {
-            String row =  "";
-            row += motorcycle.getLicensePlate() + "," + motorcycle.getManufacturer().getManufacturerId() + ","
-                    + motorcycle.getManufacturer().getManufacturerName() + ","
-                    + motorcycle.getManufacturer().getCountry() + ","
-                    + motorcycle.getYear() +","
-                    + motorcycle.getOwner() +","
-                    + motorcycle.getPower() ;
-            stringData.add(row);
-        }
-        String path = "D:\\codegym\\module2\\src\\case_study\\quan_ly_phuong_tien\\data\\output_motorcycle.txt";
-        this.fileHelper.writeFile(path,stringData);
-
-    }
-
-
-    @Override
-    public Motorcycle getByLicensePlate(String licensePlate) {
-        for (Motorcycle motorcycle : motorcycleList) {
-            if (motorcycle.getLicensePlate().equals(licensePlate)) {
-                return motorcycle;
-            }
-        }
-        return null;
-    }
-
-
-
 }

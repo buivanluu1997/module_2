@@ -6,6 +6,7 @@ public interface IVehicleRepository<T> {
 
     void addVehicle(T object);
 
+    void writeFile(List<T> list);
 
     List<T> getVehicles();
 
@@ -16,8 +17,7 @@ public interface IVehicleRepository<T> {
 
     List<T> searchLicensePlate(String licensePlate);
 
-    void readFile();
 
-    void writeFile();
+
 
 }

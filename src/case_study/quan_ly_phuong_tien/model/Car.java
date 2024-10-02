@@ -31,6 +31,12 @@ public class Car extends Vehicle{
 
     @Override
     public String displayInfo() {
-        return "Ô tô: " + super.toString() + ", số chỗ ngồi: " + seatNumber + ", kiểu xe: " + carType;
+        return "Ô tô:" + super.toString() + ", số chỗ ngồi: " + seatNumber + ", kiểu xe: " + carType;
+    }
+
+    public String convertCarToLine(){
+        return "Ô tô:" + "," + this.getLicensePlate() + "," + this.getManufacturer().getManufacturerId() + ","
+                + this.getManufacturer().getManufacturerName() + "," + this.getManufacturer().getCountry() + ","
+                + this.getYear() + "," + this.getOwner() + "," + this.getSeatNumber() + "," + this.getCarType();
     }
 }

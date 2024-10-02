@@ -13,8 +13,4 @@ public interface IVehicleService<T> {
 
     List<T> searchLicensePlate(String licensePlate);
 
-    void readFile();
-
-    void writeFile();
-
 }

@@ -17,7 +17,7 @@ public class MotorcycleRepository implements IVehicleRepository<Motorcycle>{
         List<Motorcycle> motorcycleList = getAll();
         motorcycleList.add(motorcycle);
 
-        writeFileCustomer(motorcycleList);
+        writeFileVehicle(motorcycleList);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class MotorcycleRepository implements IVehicleRepository<Motorcycle>{
     }
 
     @Override
-    public void writeFileCustomer(List<Motorcycle> list) {
+    public void writeFileVehicle(List<Motorcycle> list) {
         List<String> stringList = new ArrayList<>();
         for (Motorcycle motorcycle : list) {
             String line = motorcycle.convertMotorcycleToLine();
@@ -69,7 +69,7 @@ public class MotorcycleRepository implements IVehicleRepository<Motorcycle>{
                 motorcycleList.remove(i);
             }
         }
-        writeFileCustomer(motorcycleList);
+        writeFileVehicle(motorcycleList);
     }
 
     @Override

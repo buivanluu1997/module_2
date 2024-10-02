@@ -17,7 +17,7 @@ public class CarRepository implements IVehicleRepository<Car>{
         List<Car> carList = getAll();
         carList.add(car);
 
-        writeFileCustomer(carList);
+        writeFileVehicle(carList);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class CarRepository implements IVehicleRepository<Car>{
     }
 
     @Override
-    public void writeFileCustomer(List<Car> list) {
+    public void writeFileVehicle(List<Car> list) {
         List<String> stringList = new ArrayList<>();
         for (Car car : list) {
             String line = car.convertCarToLine();
@@ -68,7 +68,7 @@ public class CarRepository implements IVehicleRepository<Car>{
                 carList.remove(i);
             }
         }
-        writeFileCustomer(carList);
+        writeFileVehicle(carList);
     }
 
     @Override

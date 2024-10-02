@@ -21,6 +21,12 @@ public class Truck extends Vehicle{
 
     @Override
     public String displayInfo() {
-        return "Xe tải: " + super.toString() + ", trọng tải: " + loadCapacity;
+        return "Xe tải:" + super.toString() + ", trọng tải: " + loadCapacity;
+    }
+
+    public String convertTruckToLine(){
+        return  "Xe tải:" + "," + this.getLicensePlate() + "," + this.getManufacturer().getManufacturerId() + ","
+                + this.getManufacturer().getManufacturerName() + "," + this.getManufacturer().getCountry() + ","
+                + this.getYear() + "," + this.getOwner() + "," + this.getLoadCapacity();
     }
 }

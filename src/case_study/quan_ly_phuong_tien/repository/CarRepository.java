@@ -2,40 +2,61 @@ package case_study.quan_ly_phuong_tien.repository;
 
 import case_study.quan_ly_phuong_tien.model.Car;
 import case_study.quan_ly_phuong_tien.model.Manufacturer;
-import case_study.quan_ly_phuong_tien.model.Motorcycle;
-import case_study.quan_ly_phuong_tien.service.FileHelper;
+import case_study.quan_ly_phuong_tien.util.ReadWriteFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarRepository implements IVehicleRepository<Car> {
-    private List<Car> carList;
-    private ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
-    private FileHelper fileHelper = new FileHelper();
 
-    public CarRepository() {
-        this.carList = new ArrayList<>();
-        carList.add(new Car("75A.25412", manufacturerRepository.manufacturerList.get(0), 2020, "Nguyễn Trọng Hoàng", 4, "Dịch vụ"));
-    }
+    private ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
+    private final String FILE_VEHICLE = "src/case_study/quan_ly_phuong_tien/data/vehicle.csv";
+
 
     @Override
     public void addVehicle(Car car) {
-        carList.add(car);
+       List<Car> carList = getVehicles();
+       carList.add(car);
+
+       writeFile(carList);
     }
 
     @Override
     public List<Car> getVehicles() {
+        List<Car> carList = new ArrayList<>();
+        List<String> stringList = ReadWriteFile.readFile(FILE_VEHICLE);
+        for (String line : stringList) {
+            String[] array = line.split(",");
+            if (array[0].equals("Ô tô:")) {
+                String licensePlate = array[1];
+                String manufaturerId = array[2];
+                int year = Integer.parseInt(array[5]);
+                String owner = array[6];
+                int seatNumber = Integer.parseInt(array[7]);
+                String carType = array[8];
+                Manufacturer manufacturer = manufacturerRepository.getById(manufaturerId);
+                Car car = new Car(licensePlate, manufacturer, year, owner, seatNumber, carType);
+                carList.add(car);
+            }
+        }
         return carList;
     }
 
     @Override
     public void delete(Car car) {
-        carList.remove(car);
+        List<Car> carList = getVehicles();
+        for (int i = 0; i < carList.size(); i++) {
+            if (carList.get(i).getLicensePlate().equals(car.getLicensePlate())) {
+                carList.remove(carList.get(i));
+            }
+        }
+        writeFile(carList);
     }
 
 
     @Override
     public List<Car> searchLicensePlate(String licensePlate) {
+        List<Car> carList = getVehicles();
         List<Car> result = new ArrayList<>();
 
         for (Car car : carList) {
@@ -46,41 +67,21 @@ public class CarRepository implements IVehicleRepository<Car> {
         return result;
     }
 
-    @Override
-    public void readFile() {
-        String filePath = "D:\\codegym\\module2\\src\\case_study\\quan_ly_phuong_tien\\data\\output_car.txt";
-        List<String> data =  fileHelper.readFile(filePath);
-        for (String item : data){
-            String [] cols = item.split(",");
-            String palate = cols[0];
-            String manufacturerId = cols[1];
-            int year = Integer.parseInt(cols[4]);
-            String owner = cols[5];
-            int seatNumber = Integer.parseInt(cols[6]);
-            String carType = cols[7];
-
-            Manufacturer manufacturer = manufacturerRepository.getById(manufacturerId);
-            Car car = new Car(palate,manufacturer,year,owner,seatNumber,carType);
-            carList.add(car);
-        }
-    }
 
     @Override
-    public void writeFile() {
+    public void writeFile(List<Car> carList) {
         List<String> stringData = new ArrayList<>();
         for (Car car : carList) {
-            String row = "";
-            row += car.getLicensePlate() + "," + car.getManufacturer().getManufacturerId() + ","
-                    + car.getManufacturer().getManufacturerName() + "," + car.getManufacturer().getCountry() + ","
-                    + car.getYear() + "," + car.getOwner() + "," + car.getSeatNumber() + "," + car.getCarType();
-            stringData.add(row);
+            String line = car.convertCarToLine();
+            stringData.add(line);
         }
-        String path = "D:\\codegym\\module2\\src\\case_study\\quan_ly_phuong_tien\\data\\output_car.txt";
-        this.fileHelper.writeFile(path, stringData);
+
+        ReadWriteFile.writeFile(FILE_VEHICLE, stringData, true);
     }
 
     @Override
     public Car getByLicensePlate(String licensePlate) {
+        List<Car> carList = getVehicles();
         for (Car car : carList) {
             if (car.getLicensePlate().equals(licensePlate)) {
                 return car;

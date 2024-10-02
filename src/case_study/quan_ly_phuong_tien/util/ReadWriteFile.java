@@ -1,11 +1,11 @@
-package case_study.quan_ly_phuong_tien.service;
+package case_study.quan_ly_phuong_tien.util;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileHelper {
-    public List<String> readFile(String path) {
+public class ReadWriteFile {
+    public static List<String> readFile(String path) {
         List<String> lists = new ArrayList<>();
         try {
             File file = new File(path);
@@ -20,21 +20,23 @@ public class FileHelper {
                 lists.add(line);
             }
             bufferedReader.close();
+            fileReader.close();
         } catch (Exception e) {
             System.out.println("File không tồn tại hoặc file có lỗi!");
         }
         return lists;
     }
 
-    public void writeFile(String path, List<String> lists) {
+    public static void writeFile(String path, List<String> lists, boolean appaend) {
         try {
-            FileWriter fileWriter = new FileWriter(path, false);
+            FileWriter fileWriter = new FileWriter(path, appaend);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (String list : lists) {
                 bufferedWriter.write(list);
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();
+            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
