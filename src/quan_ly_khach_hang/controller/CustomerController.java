@@ -5,6 +5,7 @@ import quan_ly_khach_hang.repository.ICustomerRipository;
 import quan_ly_khach_hang.service.CustomerService;
 import quan_ly_khach_hang.service.ICustomerService;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -55,12 +56,11 @@ public class CustomerController {
                     editCustomer();
                 case 8:
                     System.out.println("<---------------------------------Sắp xếp id từ cao đến thấp--------------------------------->");
-                    customerService.sortId();
+                    sortId();
                     break;
                 case 9:
                     System.exit(0);
             }
-
         }
     }
 
@@ -80,9 +80,15 @@ public class CustomerController {
         } else {
             System.out.println("Không tìm thấy khách hàng");
         }
-
-
     }
+
+    public void sortId() {
+        List<Customer> customers = customerService.sortId();
+        for (Customer customer : customers) {
+            System.out.println(customer);
+        }
+    }
+
 
     private void sortName() {
         List<Customer> customers = customerService.sortName();
@@ -142,11 +148,10 @@ public class CustomerController {
                     "2. No");
             int choose = Integer.parseInt(scanner.nextLine());
             if (choose == 1) {
-                customerService.delete(id);
+                customerService.delete(customer);
             } else {
                 System.out.println("Đã đóng.");
             }
         }
     }
-
 }

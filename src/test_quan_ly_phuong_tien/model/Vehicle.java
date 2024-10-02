@@ -1,6 +1,5 @@
 package test_quan_ly_phuong_tien.model;
 
-import case_study.quan_ly_phuong_tien.model.Manufacturer;
 
 public abstract class Vehicle {
     private String licensePlate;
@@ -8,8 +7,6 @@ public abstract class Vehicle {
     private int year;
     private String owner;
 
-    public Vehicle() {
-    }
 
     public Vehicle(String licensePlate, Manufacturer manufacturer, int year, String owner) {
         this.licensePlate = licensePlate;

@@ -1,8 +1,6 @@
 package test_quan_ly_phuong_tien.controller;
 
-import test_quan_ly_phuong_tien.model.Car;
 import test_quan_ly_phuong_tien.model.Truck;
-import test_quan_ly_phuong_tien.service.CarService;
 import test_quan_ly_phuong_tien.service.IVehicleService;
 import test_quan_ly_phuong_tien.service.TruckService;
 

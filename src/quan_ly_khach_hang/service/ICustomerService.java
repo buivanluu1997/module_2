@@ -8,17 +8,15 @@ public interface ICustomerService {
 
     List<Customer> getAll();
 
-    List<Customer> displayCustomer();
-
     void add(Customer customer);
 
-    void delete(int id);
+    void delete(Customer customer);
 
     Customer findByID(int id);
 
     List<Customer> searchName(String name);
 
-    public List<Customer> sortName();
+    List<Customer> sortName();
 
     boolean edit(Customer editCustomer);
 

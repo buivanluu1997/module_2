@@ -1,35 +1,60 @@
 package test_quan_ly_phuong_tien.repository;
 
-import test_quan_ly_phuong_tien.model.Car;
-import test_quan_ly_phuong_tien.model.Motorcycle;
+import test_quan_ly_phuong_tien.model.Manufacturer;
 import test_quan_ly_phuong_tien.model.Truck;
+import test_quan_ly_phuong_tien.util.ReadWriteFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TruckRepository implements IVehicleRepository<Truck>{
-    private List<Truck> trucks;
-    private ManufactureRepository manufactureRepository = new ManufactureRepository();
+public class TruckRepository implements IVehicleRepository<Truck> {
 
-    public TruckRepository() {
-        this.trucks = new ArrayList<>();
-        trucks.add(new Truck("75C.22545", manufactureRepository.manufactures.get(2), 2020, "Lê Toàn", 3.5));
-        trucks.add(new Truck("75C.22111", manufactureRepository.manufactures.get(1), 2022, "Hoàng Dũng", 2.75));
-    }
+    private ManufacturerRepository manufactureRepository = new ManufacturerRepository();
+    private final String FILE_CAR_CSV = "src/test_quan_ly_phuong_tien/data/truck.csv";
+
 
     @Override
-    public void add(Truck object) {
-        trucks.add(object);
+    public void add(Truck truck) {
+        List<Truck> trucks = getAll();
+        trucks.add(truck);
+
+        writeFileCustomer(trucks);
     }
 
     @Override
     public List<Truck> getAll() {
-        return trucks;
+        List<String> lines = ReadWriteFile.readFile(FILE_CAR_CSV);
+        List<Truck> truckList = new ArrayList<>();
+        for (String line : lines) {
+            String[] arr = line.split(",");
+            String licensePlate = arr[0];
+            String manufacturerId = arr[1];
+            int year = Integer.parseInt(arr[4]);
+            String owner = arr[5];
+            double loadCapacity = Double.parseDouble(arr[6]);
+
+            Manufacturer manufacturer = manufactureRepository.findById(manufacturerId);
+            Truck truck = new Truck(licensePlate, manufacturer, year, owner, loadCapacity );
+            truckList.add(truck);
+        }
+        return truckList;
+    }
+
+    @Override
+    public void writeFileCustomer(List<Truck> list) {
+        List<String> stringList = new ArrayList<>();
+
+        for (Truck truck : list) {
+            String line = truck.convertTruckToLine();
+            stringList.add(line);
+        }
+        ReadWriteFile.writeFile(FILE_CAR_CSV, stringList, false);
     }
 
     @Override
     public Truck findLicensePlate(String licensePlate) {
-        for (Truck truck : trucks) {
+        List<Truck> truckList = getAll();
+        for (Truck truck : truckList) {
             if (truck.getLicensePlate().equals(licensePlate)) {
                 return truck;
             }
@@ -38,15 +63,22 @@ public class TruckRepository implements IVehicleRepository<Truck>{
     }
 
     @Override
-    public void delete(Truck object) {
-        trucks.remove(object);
+    public void delete(Truck truck) {
+        List<Truck> truckList = getAll();
+        for (int i = 0; i < truckList.size(); i++) {
+            if (truckList.get(i).getLicensePlate().equals(truck.getLicensePlate())) {
+                truckList.remove(i);
+            }
+        }
+        writeFileCustomer(truckList);
     }
 
     @Override
     public List<Truck> search(String licensePlate) {
+        List<Truck> truckList = getAll();
         List<Truck> result = new ArrayList<>();
-        for (Truck truck : trucks) {
-            if (truck.getLicensePlate().toLowerCase().contains(licensePlate.toLowerCase())) {
+        for (Truck truck : truckList) {
+            if (truck.getLicensePlate().equals(licensePlate)) {
                 result.add(truck);
             }
         }

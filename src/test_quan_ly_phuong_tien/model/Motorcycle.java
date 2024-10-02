@@ -1,12 +1,8 @@
 package test_quan_ly_phuong_tien.model;
 
-import case_study.quan_ly_phuong_tien.model.Manufacturer;
-
 public class Motorcycle extends Vehicle {
     private double power;
 
-    public Motorcycle(String licensePlate, Manufacture manufacture, int year, String hoàngNgọcHuy, int power){
-    }
 
     public Motorcycle(String licensePlate, Manufacturer manufacturer, int year, String owner, double power) {
         super(licensePlate, manufacturer, year, owner);
@@ -24,5 +20,11 @@ public class Motorcycle extends Vehicle {
     @Override
     public String displayInfo() {
         return "Xe máy: " + super.toString() + ", công suất: " + power;
+    }
+
+    public String convertMotorcycleToLine () {
+        return this.getLicensePlate() + "," + this.getManufacturer().getManufacturerId() + "," +
+                this.getManufacturer().getManufacturerName() + "," + this.getManufacturer().getCountry() + "," +
+                this.getYear() + "," + this.getOwner() + "," + this.getPower();
     }
 }

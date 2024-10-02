@@ -9,8 +9,8 @@ import java.util.List;
 public class CarService implements IVehicleService<Car> {
     private IVehicleRepository<Car> carRepository = new CarRepository();
     @Override
-    public void add(Car object) {
-        carRepository.add(object);
+    public void add(Car car) {
+        carRepository.add(car);
     }
 
     @Override
@@ -24,8 +24,8 @@ public class CarService implements IVehicleService<Car> {
     }
 
     @Override
-    public void delete(Car object) {
-        carRepository.delete(object);
+    public void delete(Car car) {
+        carRepository.delete(car);
     }
 
     @Override

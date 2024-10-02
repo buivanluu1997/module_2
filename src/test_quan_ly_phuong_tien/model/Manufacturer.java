@@ -1,14 +1,14 @@
 package test_quan_ly_phuong_tien.model;
 
-public class Manufacture {
+public class Manufacturer {
     private String manufacturerId;
     private String manufacturerName;
     private String country;
 
-    public Manufacture() {
+    public Manufacturer() {
     }
 
-    public Manufacture(String manufacturerId, String manufacturerName, String country) {
+    public Manufacturer(String manufacturerId, String manufacturerName, String country) {
         this.manufacturerId = manufacturerId;
         this.manufacturerName = manufacturerName;
         this.country = country;

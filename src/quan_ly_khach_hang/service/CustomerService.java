@@ -14,10 +14,6 @@ public class CustomerService implements ICustomerService {
         return customerRopository.getAll();
     }
 
-    @Override
-    public List<Customer> displayCustomer() {
-        return customerRopository.displayCustomer();
-    }
 
     @Override
     public void add(Customer customer) {
@@ -25,8 +21,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void delete(int id) {
-        customerRopository.delete(id);
+    public void delete(Customer customer) {
+        customerRopository.delete(customer);
     }
 
     @Override
