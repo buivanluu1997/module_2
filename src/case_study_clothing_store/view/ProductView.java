@@ -137,23 +137,29 @@ public class ProductView {
         Pants pants = pantsController.findId(id);
         Shoes shoes = shoesController.findId(id);
         if (shirt != null || pants != null || shoes != null) {
-            System.out.println("Bạn chắc chắn xoá không? \n" +
-                    "1. Có \n" +
-                    "2. Không");
-            int choose = Integer.parseInt(scanner.nextLine());
-            if (choose == 1) {
-                if (shirt != null) {
-                    shirtController.delete(shirt);
+            try {
+                System.out.println("Bạn chắc chắn xoá không? \n" +
+                        "1. Có \n" +
+                        "2. Không");
+                int choose = Integer.parseInt(scanner.nextLine());
+                if (choose == 1) {
+                    if (shirt != null) {
+                        shirtController.delete(shirt);
+                    }
+                    if (pants != null) {
+                        pantsController.delete(pants);
+                    }
+                    if (shoes != null) {
+                        shoesController.delete(shoes);
+                    }
+                    System.out.println("Đã xoá sản phẩm thành công");
+                } else {
+                    System.out.println("Đóng");
                 }
-                if (pants != null) {
-                    pantsController.delete(pants);
-                }
-                if (shoes != null) {
-                    shoesController.delete(shoes);
-                }
-            } else {
-                System.out.println("Đóng");
+            } catch (NumberFormatException e) {
+                System.out.println("Lỗi: Nhập không đúng số nguyên");
             }
+
         } else {
             System.out.println("Sản phầm không tồn tại");
         }
@@ -244,7 +250,7 @@ public class ProductView {
     private void addShoes() {
         System.out.println("Nhập id: ");
         String id = scanner.nextLine();
-        System.out.println("Nhập tên quần: ");
+        System.out.println("Nhập tên giày: ");
         String name = scanner.nextLine();
         System.out.println("Nhập thương hiệu: ");
         String brand = scanner.nextLine();
@@ -274,8 +280,8 @@ public class ProductView {
         System.out.println("Nhập kích thước vòng eo: ");
         int size = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập chiều dài quần: ");
-        int lengh = Integer.parseInt(scanner.nextLine());
-        Pants pants = new Pants(id, name, brand, price, quantity, size, lengh);
+        int length = Integer.parseInt(scanner.nextLine());
+        Pants pants = new Pants(id, name, brand, price, quantity, size, length);
         pantsController.add(pants);
     }
 

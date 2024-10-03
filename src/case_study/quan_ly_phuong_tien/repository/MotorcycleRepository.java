@@ -14,13 +14,14 @@ public class MotorcycleRepository implements IVehicleRepository<Motorcycle> {
     private final String FILE_VEHICLE = "src/case_study/quan_ly_phuong_tien/data/vehicle.csv";
 
 
+    public MotorcycleRepository(){}
+
     @Override
-    public void addVehicle(Motorcycle object) {
-        List<Motorcycle> motorcycleList = getVehicles();
-        motorcycleList.add(object);
+    public void addVehicle(Motorcycle motorcycle) {
+        List<String> stringList = new ArrayList<>();
+        stringList.add(motorcycle.convertMotorcycleToLine());
 
-        writeFile(motorcycleList);
-
+        ReadWriteFile.writeFile(FILE_VEHICLE, stringList, true);
     }
 
     @Override
@@ -30,8 +31,9 @@ public class MotorcycleRepository implements IVehicleRepository<Motorcycle> {
             String line = motorcycle.convertMotorcycleToLine();
             stringList.add(line);
         }
-        ReadWriteFile.writeFile(FILE_VEHICLE, stringList, true);
+        ReadWriteFile.writeFile(FILE_VEHICLE, stringList, false);
     }
+
 
     @Override
     public List<Motorcycle> getVehicles() {
@@ -65,14 +67,17 @@ public class MotorcycleRepository implements IVehicleRepository<Motorcycle> {
     }
 
     @Override
-    public void delete(Motorcycle object) {
-        List<Motorcycle> motorcycleList = getVehicles();
-        for (int i = 0; i < motorcycleList.size(); i++) {
-            if (motorcycleList.get(i).getLicensePlate().equals(object.getLicensePlate())) {
-                motorcycleList.remove(motorcycleList.get(i));
+    public void delete(Motorcycle motorcycle) {
+        List<String> stringList = ReadWriteFile.readFile(FILE_VEHICLE);
+        List<String> updateList = new ArrayList<>();
+        for (String line : stringList) {
+            String[] array = line.split(",");
+            if (array[0].equals("Xe máy:") && array[1].equals(motorcycle.getLicensePlate())) {
+                continue;
             }
+            updateList.add(line);
         }
-        writeFile(motorcycleList);
+        ReadWriteFile.writeFile(FILE_VEHICLE, updateList, false);
     }
 
     @Override

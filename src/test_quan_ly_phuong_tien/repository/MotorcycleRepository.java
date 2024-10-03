@@ -66,9 +66,10 @@ public class MotorcycleRepository implements IVehicleRepository<Motorcycle>{
         List<Motorcycle> motorcycleList = getAll();
         for (int i = 0; i < motorcycleList.size(); i++) {
             if (motorcycleList.get(i).getLicensePlate().equals(motorcycle.getLicensePlate())) {
-                motorcycleList.remove(i);
+                motorcycleList.remove(motorcycleList.get(i));
             }
         }
+
         writeFileVehicle(motorcycleList);
     }
 

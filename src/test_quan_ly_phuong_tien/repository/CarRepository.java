@@ -65,9 +65,10 @@ public class CarRepository implements IVehicleRepository<Car>{
         List<Car> carList = getAll();
         for (int i = 0; i < carList.size(); i++) {
             if (carList.get(i).getLicensePlate().equals(car.getLicensePlate())) {
-                carList.remove(i);
+                carList.remove(carList.get(i));
             }
         }
+
         writeFileVehicle(carList);
     }
 

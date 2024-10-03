@@ -27,9 +27,9 @@ public class ReadWriteFile {
         return lists;
     }
 
-    public static void writeFile(String path, List<String> lists, boolean appaend) {
+    public static void writeFile(String path, List<String> lists, boolean append) {
         try {
-            FileWriter fileWriter = new FileWriter(path, appaend);
+            FileWriter fileWriter = new FileWriter(path, append);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (String list : lists) {
                 bufferedWriter.write(list);

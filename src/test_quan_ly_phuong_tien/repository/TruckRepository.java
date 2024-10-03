@@ -67,9 +67,10 @@ public class TruckRepository implements IVehicleRepository<Truck> {
         List<Truck> truckList = getAll();
         for (int i = 0; i < truckList.size(); i++) {
             if (truckList.get(i).getLicensePlate().equals(truck.getLicensePlate())) {
-                truckList.remove(i);
+                truckList.remove(truckList.get(i));
             }
         }
+
         writeFileVehicle(truckList);
     }
 

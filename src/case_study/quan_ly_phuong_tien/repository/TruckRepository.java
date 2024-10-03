@@ -1,6 +1,7 @@
 package case_study.quan_ly_phuong_tien.repository;
 
 import case_study.quan_ly_phuong_tien.model.Manufacturer;
+import case_study.quan_ly_phuong_tien.model.Motorcycle;
 import case_study.quan_ly_phuong_tien.model.Truck;
 import case_study.quan_ly_phuong_tien.util.ReadWriteFile;
 
@@ -12,12 +13,14 @@ public class TruckRepository implements IVehicleRepository<Truck> {
     private ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
     private final String FILE_VEHICLE = "src/case_study/quan_ly_phuong_tien/data/vehicle.csv";
 
-    @Override
-    public void addVehicle(Truck object) {
-        List<Truck> truckList = getVehicles();
-        truckList.add(object);
+    public TruckRepository() {}
 
-        writeFile(truckList);
+    @Override
+    public void addVehicle(Truck truck) {
+        List<String> stringList = new ArrayList<>();
+        stringList.add(truck.convertTruckToLine());
+
+        ReadWriteFile.writeFile(FILE_VEHICLE, stringList, true);
     }
 
     @Override
@@ -28,8 +31,9 @@ public class TruckRepository implements IVehicleRepository<Truck> {
             stringList.add(line);
         }
 
-        ReadWriteFile.writeFile(FILE_VEHICLE, stringList, false);
+        ReadWriteFile.writeFile(FILE_VEHICLE, stringList, true);
     }
+
 
     @Override
     public List<Truck> getVehicles() {
@@ -65,14 +69,17 @@ public class TruckRepository implements IVehicleRepository<Truck> {
     }
 
     @Override
-    public void delete(Truck object) {
-        List<Truck> truckList = getVehicles();
-        for (int i = 0; i < truckList.size(); i++) {
-            if (truckList.get(i).getLicensePlate().equals(object.getLicensePlate())) {
-                truckList.remove(i);
+    public void delete(Truck truck) {
+        List<String> stringList = ReadWriteFile.readFile(FILE_VEHICLE);
+        List<String> updateList = new ArrayList<>();
+        for (String line : stringList) {
+            String[] array = line.split(",");
+            if (array[0].equals("Xe tải:") && array[1].equals(truck.getLicensePlate())) {
+                continue;
             }
+            updateList.add(line);
         }
-        writeFile(truckList);
+        ReadWriteFile.writeFile(FILE_VEHICLE, updateList, false);
     }
 
     @Override

@@ -21,35 +21,40 @@ public class VehicleView {
 
     public void showVehicle() {
         while (true) {
-            System.out.println("Chọn chức năng: \n" +
-                    "1. Thêm mới phương tiện \n" +
-                    "2. Hiển thị phương tiện \n" +
-                    "3. Xoá phương tiện \n" +
-                    "4. Tìm kiếm theo biển kiểm soát \n" +
-                    "5. Thoát");
-            int choose = Integer.parseInt(scanner.nextLine());
-            switch (choose) {
-                case 1:
-                    System.out.println("<--------------------------Thêm mới phương tiện-------------------------->");
-                    addNewVehicle();
-                    break;
-                case 2:
-                    System.out.println("<--------------------------Hiển thị phương tiện-------------------------->");
-                    displayVehicle();
-                    break;
-                case 3:
-                    System.out.println("<--------------------------Xoá phương tiện-------------------------->");
-                    deleteVehicle();
-                    break;
-                case 4:
-                    System.out.println("<--------------------------Tìm theo biển kiểm soát-------------------------->");
-                    searchVehicle();
-                    break;
-                case 5:
-                    System.exit(0);
-                default:
-                    System.out.println("Bạn phải chọn 1-5.");
+            try {
+                System.out.println("Chọn chức năng: \n" +
+                        "1. Thêm mới phương tiện \n" +
+                        "2. Hiển thị phương tiện \n" +
+                        "3. Xoá phương tiện \n" +
+                        "4. Tìm kiếm theo biển kiểm soát \n" +
+                        "5. Thoát");
+                int choose = Integer.parseInt(scanner.nextLine());
+                switch (choose) {
+                    case 1:
+                        System.out.println("<--------------------------Thêm mới phương tiện-------------------------->");
+                        addNewVehicle();
+                        break;
+                    case 2:
+                        System.out.println("<--------------------------Hiển thị phương tiện-------------------------->");
+                        displayVehicle();
+                        break;
+                    case 3:
+                        System.out.println("<--------------------------Xoá phương tiện-------------------------->");
+                        deleteVehicle();
+                        break;
+                    case 4:
+                        System.out.println("<--------------------------Tìm theo biển kiểm soát-------------------------->");
+                        searchVehicle();
+                        break;
+                    case 5:
+                        System.exit(0);
+                    default:
+                        System.out.println("Bạn phải chọn 1-5.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Lỗi: Nhập không đúng số nguyên.");
             }
+
         }
     }
 
@@ -94,107 +99,121 @@ public class VehicleView {
         if (truck == null && car == null && motorcycle == null) {
             System.out.println("Không tìm thấy phương tiện");
         } else {
-            System.out.println("Bạn có muốn xoá hay không: \n" +
-                    "1. Có \n" +
-                    "2. Không");
-            int choose2 = Integer.parseInt(scanner.nextLine());
-            switch (choose2) {
-                case 1:
-                    if (truck != null) {
-                        truckController.delete(truck);
-                    }
-                    if (car != null) {
-                        carController.delete(car);
-                    }
-                    if (motorcycle != null) {
-                        motorcycleController.delete(motorcycle);
-                    }
-                    System.out.println("Đã xoá thành công");
-                    break;
-                case 2:
-                    System.out.println("Quay về màn hình chính");
-                    break;
-                default:
-                    System.out.println("Bạn chọn ngoài 1-2 nên thoát.");
-                    break;
+            try {
+                System.out.println("Bạn có muốn xoá hay không: \n" +
+                        "1. Có \n" +
+                        "2. Không");
+                int choose2 = Integer.parseInt(scanner.nextLine());
+                switch (choose2) {
+                    case 1:
+                        if (truck != null) {
+                            truckController.delete(truck);
+                        }
+                        if (car != null) {
+                            carController.delete(car);
+                        }
+                        if (motorcycle != null) {
+                            motorcycleController.delete(motorcycle);
+                        }
+                        System.out.println("Đã xoá thành công");
+                        break;
+                    case 2:
+                        System.out.println("Quay về màn hình chính");
+                        break;
+                    default:
+                        System.out.println("Bạn chọn ngoài 1-2 nên thoát.");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Lỗi: Nhập không đúng số nguyên.");
             }
 
         }
     }
 
     private void displayVehicle() {
-        System.out.println("Chọn phương tiện cần hiển thị: \n" +
-                "1. Hiển thị xe tải \n" +
-                "2. Hiển thị xe ô tô \n" +
-                "3. Hiển thị xe máy");
-        int choose2 = Integer.parseInt(scanner.nextLine());
-        switch (choose2) {
-            case 1:
-                System.out.println("-------------Danh sách xe tải-------------");
-                List<Truck> truckList = truckController.getAll();
-                for (Truck truck : truckList) {
-                    System.out.println(truck.displayInfo());
-                }
-                break;
-            case 2:
-                System.out.println("-------------Danh sách xe ô tô-------------");
-                List<Car> carList = carController.getAll();
-                for (Car car : carList) {
-                    System.out.println(car.displayInfo());
-                }
-                break;
-            case 3:
-                System.out.println("-------------Danh sách xe máy-------------");
-                List<Motorcycle> motorcycleList = motorcycleController.getAll();
-                for (Motorcycle motorcycle : motorcycleList) {
-                    System.out.println(motorcycle.displayInfo());
-                }
-                break;
-            default:
-                System.out.println("Bạn nhập ngoài 1-3 nên thoát.");
+        try {
+            System.out.println("Chọn phương tiện cần hiển thị: \n" +
+                    "1. Hiển thị xe tải \n" +
+                    "2. Hiển thị xe ô tô \n" +
+                    "3. Hiển thị xe máy");
+            int choose2 = Integer.parseInt(scanner.nextLine());
+            switch (choose2) {
+                case 1:
+                    System.out.println("-------------Danh sách xe tải-------------");
+                    List<Truck> truckList = truckController.getAll();
+                    for (Truck truck : truckList) {
+                        System.out.println(truck.displayInfo());
+                    }
+                    break;
+                case 2:
+                    System.out.println("-------------Danh sách xe ô tô-------------");
+                    List<Car> carList = carController.getAll();
+                    for (Car car : carList) {
+                        System.out.println(car.displayInfo());
+                    }
+                    break;
+                case 3:
+                    System.out.println("-------------Danh sách xe máy-------------");
+                    List<Motorcycle> motorcycleList = motorcycleController.getAll();
+                    for (Motorcycle motorcycle : motorcycleList) {
+                        System.out.println(motorcycle.displayInfo());
+                    }
+                    break;
+                default:
+                    System.out.println("Bạn nhập ngoài 1-3 nên thoát.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Lỗi: Nhập không đúng số nguyên.");
         }
+
     }
 
     private void addNewVehicle() {
-        System.out.println("Chọn thêm loại phương tiện: \n" +
-                "1. Thêm xe tải \n" +
-                "2. Thêm ô tô \n" +
-                "3. Thêm xe máy");
-        int chooseVehicle = Integer.parseInt(scanner.nextLine());
+        try {
+            System.out.println("Chọn thêm loại phương tiện: \n" +
+                    "1. Thêm xe tải \n" +
+                    "2. Thêm ô tô \n" +
+                    "3. Thêm xe máy");
+            int chooseVehicle = Integer.parseInt(scanner.nextLine());
 
-        System.out.println("Nhập biển kiểm soát: ");
-        String licensePlate = scanner.nextLine();
-        System.out.println("Chọn hãng sản xuất: ");
-        Manufacturer manufacturer = getManufacturer();
-        System.out.println("Nhập năm sản xuất: ");
-        int year = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập chủ sở hữu: ");
-        String owner = scanner.nextLine();
+            System.out.println("Nhập biển kiểm soát: ");
+            String licensePlate = scanner.nextLine();
+            System.out.println("Chọn hãng sản xuất: ");
+            Manufacturer manufacturer = getManufacturer();
+            System.out.println("Nhập năm sản xuất: ");
+            int year = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập chủ sở hữu: ");
+            String owner = scanner.nextLine();
 
-        switch (chooseVehicle) {
-            case 1:
-                System.out.println("Nhập tải trọng: ");
-                double loadCapacity = Double.parseDouble(scanner.nextLine());
-                Truck truck = new Truck(licensePlate, manufacturer, year, owner, loadCapacity);
-                truckController.add(truck);
-                break;
-            case 2:
-                System.out.println("Nhập số chỗ ngồi: ");
-                int seatNumber = Integer.parseInt(scanner.nextLine());
-                System.out.println("Nhập kiểu xe(du lịch hoặc xe khách): ");
-                String carType = scanner.nextLine();
-                Car car = new Car(licensePlate, manufacturer, year, owner, seatNumber, carType);
-                carController.add(car);
-                break;
-            case 3:
-                System.out.println("Nhập công suất: ");
-                double power = Double.parseDouble(scanner.nextLine());
-                Motorcycle motorcycle = new Motorcycle(licensePlate, manufacturer, year, owner, power);
-                motorcycleController.add(motorcycle);
-                break;
-            default:
-                System.out.println("Bạn nhập ngoài 1-3 nên thoát.");
+            switch (chooseVehicle) {
+                case 1:
+                    System.out.println("Nhập tải trọng: ");
+                    double loadCapacity = Double.parseDouble(scanner.nextLine());
+                    Truck truck = new Truck(licensePlate, manufacturer, year, owner, loadCapacity);
+                    truckController.add(truck);
+                    break;
+                case 2:
+                    System.out.println("Nhập số chỗ ngồi: ");
+                    int seatNumber = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Nhập kiểu xe(du lịch hoặc xe khách): ");
+                    String carType = scanner.nextLine();
+                    Car car = new Car(licensePlate, manufacturer, year, owner, seatNumber, carType);
+                    carController.add(car);
+                    break;
+                case 3:
+                    System.out.println("Nhập công suất: ");
+                    double power = Double.parseDouble(scanner.nextLine());
+                    Motorcycle motorcycle = new Motorcycle(licensePlate, manufacturer, year, owner, power);
+                    motorcycleController.add(motorcycle);
+                    break;
+                default:
+                    System.out.println("Bạn nhập ngoài 1-3 nên thoát.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Lỗi: Nhập không đúng số nguyên.");
         }
+
     }
 
     private Manufacturer getManufacturer() {

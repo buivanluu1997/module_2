@@ -38,4 +38,9 @@ public class Shirt extends Product{
     public String displayInfo() {
         return "Áo{ " + super.toString() + ", size áo: " + size + ", màu sắc: " + color + "}";
     }
+
+    public String convertShirtToLine() {
+        return this.getId() + "," + this.getName() + "," + this.getBrand() + "," + this.getPrice()
+                + "," + this.getQuantity() + "," + this.getSize() + "," + this.getColor();
+    }
 }

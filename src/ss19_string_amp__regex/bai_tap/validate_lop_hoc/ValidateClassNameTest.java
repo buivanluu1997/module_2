@@ -1,11 +1,11 @@
 package ss19_string_amp__regex.bai_tap.validate_lop_hoc;
 
-public class NameClassTest {
+public class ValidateClassNameTest {
     private static final String[] validName = new String[] {"C0223G", "A0323K"};
     private static final String[] invalidName = new String[] {"M0318G", "P0323A"};
 
     public static void main(String[] args) {
-        NameClass nameClass = new NameClass();
+        ValidateClassName nameClass = new ValidateClassName();
 
         for (String name : validName) {
             boolean isValid = nameClass.validate(name);

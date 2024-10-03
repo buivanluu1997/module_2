@@ -2,6 +2,7 @@ package case_study.quan_ly_phuong_tien.repository;
 
 import case_study.quan_ly_phuong_tien.model.Car;
 import case_study.quan_ly_phuong_tien.model.Manufacturer;
+import case_study.quan_ly_phuong_tien.model.Motorcycle;
 import case_study.quan_ly_phuong_tien.util.ReadWriteFile;
 
 import java.util.ArrayList;
@@ -12,13 +13,14 @@ public class CarRepository implements IVehicleRepository<Car> {
     private ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
     private final String FILE_VEHICLE = "src/case_study/quan_ly_phuong_tien/data/vehicle.csv";
 
+    public CarRepository() {}
 
     @Override
     public void addVehicle(Car car) {
-       List<Car> carList = getVehicles();
-       carList.add(car);
+       List<String> stringList = new ArrayList<>();
+       stringList.add(car.convertCarToLine());
 
-       writeFile(carList);
+       ReadWriteFile.writeFile(FILE_VEHICLE, stringList, true);
     }
 
     @Override
@@ -44,15 +46,18 @@ public class CarRepository implements IVehicleRepository<Car> {
 
     @Override
     public void delete(Car car) {
-        List<Car> carList = getVehicles();
-        for (int i = 0; i < carList.size(); i++) {
-            if (carList.get(i).getLicensePlate().equals(car.getLicensePlate())) {
-                carList.remove(carList.get(i));
-            }
-        }
-        writeFile(carList);
-    }
 
+        List<String> stringList = ReadWriteFile.readFile(FILE_VEHICLE);
+        List<String> updateList = new ArrayList<>();
+        for (String line : stringList) {
+            String[] array = line.split(",");
+            if (array[0].equals("Ô tô:") && array[1].equals(car.getLicensePlate())) {
+                continue;
+            }
+            updateList.add(line);
+        }
+        ReadWriteFile.writeFile(FILE_VEHICLE, updateList, false);
+    }
 
     @Override
     public List<Car> searchLicensePlate(String licensePlate) {

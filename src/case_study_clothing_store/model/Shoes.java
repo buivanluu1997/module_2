@@ -38,4 +38,9 @@ public class Shoes extends Product{
     public String displayInfo() {
         return "Giày{ " + super.toString() + ", size giày: " + sizeShoes + ", chất liệu: " + material + " }";
     }
+
+    public String convertShoesToLine(){
+        return this.getId() + "," + this.getName() + "," + this.getBrand() + "," + this.getPrice() + ","
+                + this.getQuantity() + "," + this.getSizeShoes() + "," + this.getMaterial();
+    }
 }

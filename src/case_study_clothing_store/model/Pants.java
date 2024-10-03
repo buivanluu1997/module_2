@@ -33,4 +33,10 @@ public class Pants extends Product {
     public String displayInfo() {
         return "Quần{ " + super.toString() + ", vòng eo: " + waistSize + " cm" + ", chiều dài: " + length + "cm" + " }";
     }
+
+    public String convertPantsToLine() {
+        return this.getId() + "," + this.getName() + "," + this.getBrand() + ","
+                + this.getPrice() + "," + this.getQuantity() + ","
+                + this.getWaistSize() + "," + this.getLength();
+    }
 }

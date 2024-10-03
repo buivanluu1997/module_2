@@ -3,6 +3,8 @@ package case_study_clothing_store.repository;
 import java.util.List;
 
 public interface IProductRepository<T> {
+    void writeFile(List<T> list);
+
     void add(T object);
 
     List<T> getAll();

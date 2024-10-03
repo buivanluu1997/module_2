@@ -1,4 +1,4 @@
-package case_study.quan_ly_phuong_tien.util;
+package case_study_clothing_store.util;
 
 import java.io.*;
 import java.util.ArrayList;
