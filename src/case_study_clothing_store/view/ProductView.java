@@ -51,8 +51,8 @@ public class ProductView {
                     case 6:
                         System.exit(0);
                 }
-            } catch (Exception e) {
-                System.out.println("Phải nhập số nguyên.");
+            } catch (NumberFormatException e) {
+                System.out.println("Lỗi: Nhập không phải là số nguyên");
             }
 
         }
@@ -157,7 +157,7 @@ public class ProductView {
                     System.out.println("Đóng");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Lỗi: Nhập không đúng số nguyên");
+                System.out.println("Lỗi: Nhập không phải là số nguyên");
             }
 
         } else {
@@ -197,8 +197,8 @@ public class ProductView {
                 default:
                     System.out.println("Chọn từ 1-3, bạn chọn ngoài nên thoát");
             }
-        } catch (Exception e) {
-            System.out.println("Phải chọn đúng số nguyên");
+        } catch (NumberFormatException e) {
+            System.out.println("Lỗi: Chọn không phải là số nguyên");
         }
     }
 
@@ -241,66 +241,81 @@ public class ProductView {
                     System.out.println("Chọn từ 1-3, bạn chọn ngoài nên thoát");
                     break;
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             System.out.println("Phải chọn đúng số nguyên");
         }
 
     }
 
     private void addShoes() {
-        System.out.println("Nhập id: ");
-        String id = scanner.nextLine();
-        System.out.println("Nhập tên giày: ");
-        String name = scanner.nextLine();
-        System.out.println("Nhập thương hiệu: ");
-        String brand = scanner.nextLine();
-        System.out.println("Nhập giá: ");
-        double price = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhập số lượng: ");
-        int quantity = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập size giày: ");
-        int size = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập loại giày: ");
-        String material = scanner.nextLine();
-        Shoes shoes = new Shoes(id, name, brand, price, quantity, size, material);
-        shoesController.add(shoes);
+        try {
+            System.out.println("Nhập id: ");
+            String id = scanner.nextLine();
+            System.out.println("Nhập tên giày: ");
+            String name = scanner.nextLine();
+            System.out.println("Nhập thương hiệu: ");
+            String brand = scanner.nextLine();
+            System.out.println("Nhập giá: ");
+            double price = Double.parseDouble(scanner.nextLine());
+            System.out.println("Nhập số lượng: ");
+            int quantity = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập size giày: ");
+            int size = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập loại giày: ");
+            String material = scanner.nextLine();
+            Shoes shoes = new Shoes(id, name, brand, price, quantity, size, material);
+            shoesController.add(shoes);
+            System.out.println("Đã thêm giày thành công");
+        } catch (NumberFormatException e) {
+            System.out.println("Lỗi: Dữ liệu nhập vào không hợp lệ");
+        }
     }
 
     private void addPants() {
-        System.out.println("Nhập id: ");
-        String id = scanner.nextLine();
-        System.out.println("Nhập tên quần: ");
-        String name = scanner.nextLine();
-        System.out.println("Nhập thương hiệu: ");
-        String brand = scanner.nextLine();
-        System.out.println("Nhập giá: ");
-        double price = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhập số lượng: ");
-        int quantity = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập kích thước vòng eo: ");
-        int size = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập chiều dài quần: ");
-        int length = Integer.parseInt(scanner.nextLine());
-        Pants pants = new Pants(id, name, brand, price, quantity, size, length);
-        pantsController.add(pants);
+        try {
+            System.out.println("Nhập id: ");
+            String id = scanner.nextLine();
+            System.out.println("Nhập tên quần: ");
+            String name = scanner.nextLine();
+            System.out.println("Nhập thương hiệu: ");
+            String brand = scanner.nextLine();
+            System.out.println("Nhập giá: ");
+            double price = Double.parseDouble(scanner.nextLine());
+            System.out.println("Nhập số lượng: ");
+            int quantity = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập kích thước vòng eo: ");
+            int size = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập chiều dài quần: ");
+            int length = Integer.parseInt(scanner.nextLine());
+            Pants pants = new Pants(id, name, brand, price, quantity, size, length);
+            pantsController.add(pants);
+            System.out.println("Đã thêm quần thành công");
+        } catch (NumberFormatException e) {
+            System.out.println("Lỗi: Dữ liệu nhập vào không hợp lệ");
+        }
     }
 
     private void addShirt() {
-        System.out.println("Nhập id: ");
-        String id = scanner.nextLine();
-        System.out.println("Nhập tên áo: ");
-        String name = scanner.nextLine();
-        System.out.println("Nhập thương hiệu: ");
-        String brand = scanner.nextLine();
-        System.out.println("Nhập giá: ");
-        double price = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhập số lượng: ");
-        int quantity = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập size: ");
-        String size = scanner.nextLine();
-        System.out.println("Nhập màu: ");
-        String color = scanner.nextLine();
-        Shirt shirt = new Shirt(id, name, brand, price, quantity, size, color);
-        shirtController.add(shirt);
+        try {
+            System.out.println("Nhập id: ");
+            String id = scanner.nextLine();
+            System.out.println("Nhập tên áo: ");
+            String name = scanner.nextLine();
+            System.out.println("Nhập thương hiệu: ");
+            String brand = scanner.nextLine();
+            System.out.println("Nhập giá: ");
+            double price = Double.parseDouble(scanner.nextLine());
+            System.out.println("Nhập số lượng: ");
+            int quantity = Integer.parseInt(scanner.nextLine());
+            System.out.println("Nhập size: ");
+            String size = scanner.nextLine();
+            System.out.println("Nhập màu: ");
+            String color = scanner.nextLine();
+            Shirt shirt = new Shirt(id, name, brand, price, quantity, size, color);
+            shirtController.add(shirt);
+            System.out.println("Đã thêm áo thành công");
+        } catch (NumberFormatException e) {
+            System.out.println("Lỗi: Dữ liệu nhập vào không hợp lệ");
+        }
     }
 }

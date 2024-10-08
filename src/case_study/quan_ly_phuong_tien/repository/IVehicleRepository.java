@@ -10,14 +10,11 @@ public interface IVehicleRepository<T> {
 
     List<T> getVehicles();
 
-
     T getByLicensePlate(String licensePlate);
 
     void delete(T object);
 
     List<T> searchLicensePlate(String licensePlate);
-
-
 
 
 }

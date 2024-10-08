@@ -17,6 +17,7 @@ public class TruckRepository implements IVehicleRepository<Truck> {
 
     @Override
     public void addVehicle(Truck truck) {
+
         List<String> stringList = new ArrayList<>();
         stringList.add(truck.convertTruckToLine());
 
@@ -80,6 +81,7 @@ public class TruckRepository implements IVehicleRepository<Truck> {
             updateList.add(line);
         }
         ReadWriteFile.writeFile(FILE_VEHICLE, updateList, false);
+
     }
 
     @Override

@@ -152,35 +152,74 @@ public class VehicleView {
             int chooseVehicle = Integer.parseInt(scanner.nextLine());
             System.out.println("Nhập biển kiểm soát: ");
             String licensePlate = scanner.nextLine();
-            System.out.println("Chọn hãng sản xuất có sẵn: ");
-            Manufacturer newManufacturer = getManufacturer();
-            System.out.println("Nhập năm sản xuất: ");
-            int year = Integer.parseInt(scanner.nextLine());
-            System.out.println("Nhập chủ sở hữu: ");
-            String owner = scanner.nextLine();
 
-            switch (chooseVehicle) {
-                case 1:
-                    System.out.println("Nhập tải trọng: ");
-                    double loadCapacity = Double.parseDouble(scanner.nextLine());
-                    Truck newTruck = new Truck(licensePlate, newManufacturer, year, owner, loadCapacity);
-                    truckController.addVehicle(newTruck);
-                    break;
-                case 2:
-                    System.out.println("Nhập chỗ ngồi: ");
-                    int seatNumber = Integer.parseInt(scanner.nextLine());
-                    System.out.println("Nhập kiểu xe (du lịch hoặc xe khách): ");
-                    String carType = scanner.nextLine();
-                    Car car = new Car(licensePlate, newManufacturer, year, owner, seatNumber, carType);
-                    carController.addVehicle(car);
-                    break;
-                case 3:
-                    System.out.println("Nhập công suất: ");
-                    double power = Double.parseDouble(scanner.nextLine());
-                    Motorcycle motorcycle = new Motorcycle(licensePlate, newManufacturer, year, owner, power);
-                    motorcycleController.addVehicle(motorcycle);
-                    break;
-            }
+                switch (chooseVehicle) {
+                    case 1:
+                        Truck truck = truckController.getByLicensePlate(licensePlate);
+                        if (truck == null) {
+                            System.out.println("Chọn hãng sản xuất có sẵn: ");
+                            Manufacturer newManufacturer = getManufacturer();
+                            System.out.println("Nhập năm sản xuất: ");
+                            int year = Integer.parseInt(scanner.nextLine());
+                            System.out.println("Nhập chủ sở hữu: ");
+                            String owner = scanner.nextLine();
+
+                            System.out.println("Nhập tải trọng: ");
+                            double loadCapacity = Double.parseDouble(scanner.nextLine());
+                            Truck newTruck = new Truck(licensePlate, newManufacturer, year, owner, loadCapacity);
+                            truckController.addVehicle(newTruck);
+                            System.out.println("Đã thêm xe tải thành công");
+                        } else {
+                            System.out.println("Phương tiện đã tồn tại");
+                        }
+                        break;
+
+                    case 2:
+                        Car car = carController.getByLicensePlate(licensePlate);
+                        if (car == null) {
+                            System.out.println("Chọn hãng sản xuất có sẵn: ");
+                            Manufacturer newManufacturer = getManufacturer();
+                            System.out.println("Nhập năm sản xuất: ");
+                            int year = Integer.parseInt(scanner.nextLine());
+                            System.out.println("Nhập chủ sở hữu: ");
+                            String owner = scanner.nextLine();
+
+                            System.out.println("Nhập chỗ ngồi: ");
+                            int seatNumber = Integer.parseInt(scanner.nextLine());
+                            System.out.println("Nhập kiểu xe (du lịch hoặc xe khách): ");
+                            String carType = scanner.nextLine();
+                            Car newCar = new Car(licensePlate, newManufacturer, year, owner, seatNumber, carType);
+                            carController.addVehicle(newCar);
+                            System.out.println("Đã thêm ô tô thành công");
+                        } else {
+                            System.out.println("Phương tiện đã tồn tại");
+                        }
+                        break;
+                    case 3:
+
+                        Motorcycle motorcycle = motorcycleController.getByLicensePlate(licensePlate);
+
+                        if (motorcycle == null) {
+                            System.out.println("Chọn hãng sản xuất có sẵn: ");
+                            Manufacturer newManufacturer = getManufacturer();
+                            System.out.println("Nhập năm sản xuất: ");
+                            int year = Integer.parseInt(scanner.nextLine());
+                            System.out.println("Nhập chủ sở hữu: ");
+                            String owner = scanner.nextLine();
+
+                            System.out.println("Nhập công suất: ");
+                            double power = Double.parseDouble(scanner.nextLine());
+                            Motorcycle newMotorcycle = new Motorcycle(licensePlate, newManufacturer, year, owner, power);
+                            motorcycleController.addVehicle(newMotorcycle);
+                            System.out.println("Đã thêm xe máy thành công");
+                        } else {
+                            System.out.println("Phương tiện đã tồn tại");
+                        }
+                        break;
+                    default:
+                        System.out.println("Chọn ngoài 1-3 nên thoát");
+                }
+
         } catch (NumberFormatException e) {
             System.out.println("Lỗi: Nhập không phải là số nguyên");
         }

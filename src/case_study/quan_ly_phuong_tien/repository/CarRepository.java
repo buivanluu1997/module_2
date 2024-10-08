@@ -13,14 +13,15 @@ public class CarRepository implements IVehicleRepository<Car> {
     private ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
     private final String FILE_VEHICLE = "src/case_study/quan_ly_phuong_tien/data/vehicle.csv";
 
-    public CarRepository() {}
+    public CarRepository() {
+    }
 
     @Override
     public void addVehicle(Car car) {
-       List<String> stringList = new ArrayList<>();
-       stringList.add(car.convertCarToLine());
+        List<String> stringList = new ArrayList<>();
+        stringList.add(car.convertCarToLine());
 
-       ReadWriteFile.writeFile(FILE_VEHICLE, stringList, true);
+        ReadWriteFile.writeFile(FILE_VEHICLE, stringList, true);
     }
 
     @Override
@@ -57,6 +58,7 @@ public class CarRepository implements IVehicleRepository<Car> {
             updateList.add(line);
         }
         ReadWriteFile.writeFile(FILE_VEHICLE, updateList, false);
+
     }
 
     @Override

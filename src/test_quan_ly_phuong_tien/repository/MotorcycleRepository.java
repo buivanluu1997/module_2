@@ -10,7 +10,7 @@ import java.util.List;
 public class MotorcycleRepository implements IVehicleRepository<Motorcycle>{
 
     private ManufacturerRepository manufactureRepository = new ManufacturerRepository();
-    private final String FILE_CAR_CSV = "src/test_quan_ly_phuong_tien/data/motorcycle.csv";
+    private final String FILE_CAR_CSV = "src/test_quan_ly_phuong_tien/data/motorcycle.csv.csv";
 
     @Override
     public void add(Motorcycle motorcycle) {

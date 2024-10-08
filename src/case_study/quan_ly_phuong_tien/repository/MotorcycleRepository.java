@@ -18,6 +18,7 @@ public class MotorcycleRepository implements IVehicleRepository<Motorcycle> {
 
     @Override
     public void addVehicle(Motorcycle motorcycle) {
+
         List<String> stringList = new ArrayList<>();
         stringList.add(motorcycle.convertMotorcycleToLine());
 
